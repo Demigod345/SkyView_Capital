@@ -130,6 +130,8 @@ opacity: 0.7 ;
 .searchsto{
   margin-top: 50px;
   margin-left:80px;
+  border-color: black;
+  border-radius: 0px 3px 3px 0px;
 }
 .searchbar{
   margin-left:50px;
@@ -170,4 +172,51 @@ align-items: center;
 gap: 10px;
 border-radius: 0px 3px 3px 0px;
 background: #424480;
+}
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Center the table vertically in the viewport */
+}
+
+/* Center the table horizontally */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Center the table vertically in the viewport */
+}
+
+/* Stylish table styles */
+.table {
+  width: 80%;
+  max-width: 800px;
+  margin: 10px;
+  border-collapse: collapse;
+  border: 2px solid #333; /* Dark border color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* Add rounded corners */
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid #333; /* Dark border color */
+  text-align: center;
+}
+
+th {
+  background-color: #333; /* Dark background color for table header */
+  color: white; /* Text color for table header */
+}
+
+/* Additional styles for better appearance */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Shift the table to the right */
+.table-container {
+  justify-content: flex-end;
 }
