@@ -1,4 +1,5 @@
 import React from 'react';
+
 import "../App.css";
 
 export default function PredByInput() {
@@ -8,54 +9,32 @@ export default function PredByInput() {
       <div className="searchsto">
         <h1 className="title">pred by input</h1>
         <div className="searcher">
-          <input type="search" className="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-          <button type="button" className="search"></button>
+          <input type="search" className="searchbar" placeholder="Search" list="stocks"/>
+          <datalist id="stocks">
+            <option value='AAPLe-appl'/>
+            <option value='MSFT-microsoft'/>
+            <option value='GOOGL-google'/>
+            <option value='AMZN-amazon'/>
+            <option value='NVDA-nvadia'/>
+          </datalist>
+          <input type="submit" className="search"></input>
+         
         </div>
       </div>
-      {/* TABLE */}
-      <h1>Students Table</h1>
-      <table align="center">
-        <thead>
-          <tr>
-            <th>Ticker</th>
-            <th>Company</th>
-            <th>Start Date
-            <td><input type="date" /></td>
-            </th>
+      
+        <br></br>
+        <div className="dates" >
+        <h1>Start Date
+            <input type="date" />
+            </h1>
             
-            <th>End Date
-                 <td><input type="date" /></td>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>AAPL</td>
-            <td>APPLE INC</td>
-         
-          </tr>
-          <tr>
-            <td>MSFT</td>
-            <td>MICROSOFT CORP</td>
-         
-          </tr>
-          <tr>
-            <td>GOOGL</td>
-            <td>ALPHABET INC</td>
-           
-          </tr>
-          <tr>
-            <td>AMZN</td>
-            <td>AMAZON COM INC</td>
-           
-          </tr>
-          <tr>
-            <td>NVDA</td>
-            <td>NVIDIA CORP</td>
-            
-          </tr>
-        </tbody>
-      </table>
+            <h1>End Date
+                 <input type="date"/>
+            </h1>
+            <br></br>
+      </div>
+      
     </div>
+       
   );
 }

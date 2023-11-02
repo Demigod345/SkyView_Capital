@@ -1,18 +1,26 @@
  
 import './App.css';
 import Navbar from "./Mycomps/Navbar";
-import Bg from "./Mycomps/bg";
+import Backg from "./Mycomps/backgr";
 import Seacrhst from "./Mycomps/searchst";
 import News from "./Mycomps/news";
 import Predin  from "./Mycomps/predbyinp";
+import { useState } from 'react';
+import Graph from './Mycomps/graph';
 function App() {
+  const[isSubmitted, setIsSubmitted] = useState(false)
+
+
   return (
   <>
   <Navbar/>
-  <Bg/>
-   <Seacrhst/> 
-   <News/>  
-   <Predin/>  
+  <Backg/>
+  <Seacrhst isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/> 
+  <br></br>
+  {isSubmitted && <Graph/>} 
+  <Predin/>  
+  <br></br>
+  <News/>
  
    </>
   );
