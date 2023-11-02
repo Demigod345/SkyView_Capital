@@ -1,4 +1,3 @@
- 
 import '../stylesheets/home.css';
 import Navbar from "../Mycomps/Navbar";
 import Backg from "../Mycomps/backgr";
