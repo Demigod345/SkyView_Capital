@@ -4,7 +4,7 @@ import "../App.css";
 
 export default function PredByInput() {
   return (
-    <div className="predy">
+    <div className="predy" align="center">
       {/* SEARCH BUTTON */}
       <div className="searchsto">
         <h1 className="title">pred by input</h1>

@@ -12,7 +12,7 @@ export default function Searchst(props) {
     console.log(e.target.value)
   }
   return (
-    <div className="searchsto">
+    <div className="searchsto" align = "center">
         <h1 className = "title">Search Stocks</h1>
         <div className="searcher">
         <input type="search" className="searchbar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" list="stocks" onChange={handleChange}/>
