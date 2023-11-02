@@ -1,7 +1,8 @@
+import numpy as np
 def predict_price():
     predicted_price1 = -1000
     predicted_price2 = -2000
-    return [predicted_price1, predicted_price2]
+    return np.array(predicted_price1, predicted_price2)
 
 
 def predict_sentiment():
@@ -14,10 +15,11 @@ def technical_analysis():
     return predicted_movement
 
 
-def main():
+def Engine():
     start_year = start_month = start_date = 0
     end_year = end_month = end_date = 0
-    batch_size = prediction_days = 0
+    batch_size = 30                                 #fixed
+    prediction_days = 0
     company = ''
     predicted_price = predict_price()
     positivity_score = predict_sentiment()

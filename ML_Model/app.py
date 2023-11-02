@@ -1,7 +1,8 @@
 from flask import Flask, request 
 import os
 from dotenv import load_dotenv
-
+import engine
+print(engine.technical_analysis())
 load_dotenv()
 
 app = Flask(__name__)             

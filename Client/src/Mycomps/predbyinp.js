@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "../App.css";
+import "../stylesheets/home.css";
 
 export default function PredByInput() {
   return (

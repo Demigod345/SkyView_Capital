@@ -1,28 +1,16 @@
- 
-import './App.css';
-import Navbar from "./Mycomps/Navbar";
-import Backg from "./Mycomps/backgr";
-import Seacrhst from "./Mycomps/searchst";
-import News from "./Mycomps/news";
-import Predin  from "./Mycomps/predbyinp";
-import { useState } from 'react';
-import Graph from './Mycomps/graph';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+
 function App() {
-  const[isSubmitted, setIsSubmitted] = useState(false)
-
-
   return (
-  <>
-  <Navbar/>
-  <Backg/>
-  <Seacrhst isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/> 
-  <br></br>
-  {isSubmitted && <Graph/>} 
-  <Predin/>  
-  <br></br>
-  <News/>
- 
-   </>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/home" element = {<Home/>} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
