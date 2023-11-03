@@ -10,7 +10,7 @@ function About() {
         <p></p>
       </div>
 
-      <h2 style={{ textAlign: 'center' }}>Meet Our Team</h2>
+      <h2 style={{textAlign: 'center', fontSize:'35px',color:'white'}} aaa><u/>Meet Our Team<u/></h2>
 
       <div className="row">
         <div className="column">
