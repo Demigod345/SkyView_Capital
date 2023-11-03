@@ -1,0 +1,6 @@
+.graph{
+    display :grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 100px;
+
+}

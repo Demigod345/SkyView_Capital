@@ -91,8 +91,9 @@ function Login() {
         <div id="cover">
           <h1 className="sign-up">Hello, Friend!</h1>
           <p className="sign-up">
-            Enter your personal details<br></br> and start a journey with us
+          Enter your personal details<br></br> and start a journey with us
           </p>
+          <br></br>
           <a className="button sign-up" href="#cover">
             Sign Up
           </a>
@@ -102,9 +103,10 @@ function Login() {
             info
           </p>
           <br></br>
-          <a className="button sub sign-in" href="#">
+          <a className="button sign-in" href="#">
             Sign In
           </a>
+  
         </div>
         <div id="login">
           <h1>Sign In</h1>
