@@ -1,15 +1,28 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
 
 .App {
   text-align: center;
+  background-color: black;                    
+}
+/* Set the background color of the HTML and body elements to black */
+html, body {                                                   
+  background-color: black;                                    
+  margin: 0;                                                    
+  padding: 0;                                                  
 }
 
+/* Add background color to the main content container (if needed) */
+
+
+/* Update other elements with specific background colors as needed */
+/* ... (existing styles) ... */
+
 .bgmain{
-  margin-top: 50px;
+  
   width:100%;
-  height : 80vmin ;
+  height : 200vmin ;                          /* changed*/
+  background-color: black;                    /* changed*/
 }
 
 .img{
@@ -26,6 +39,7 @@ opacity: 0.7 ;
   width: 100%;
 height: 10vmin;
 opacity: 0.7 ;
+
 
 }
 .imag{
@@ -57,6 +71,7 @@ opacity: 0.7 ;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
 .title{
@@ -87,14 +102,18 @@ opacity: 0.7 ;
   justify-content: space-between;
   align-items: center;
   padding: 20px; /* Increased padding for better spacing */
-  background-color: #1e2a78; /* Background color */
+  background-color: #3aaf9f; /* Background color /                              / changed*/
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  background-color: black;  
+  height:150px;                                                          /* changed*/
   
 }
 
 .navbarmain {
+  font-family:"Montserrat" ;
   width: 30%;
   position: relative;
+    background-color: black;                                     /* changed*/
 }
 
 .navright {
@@ -111,11 +130,11 @@ opacity: 0.7 ;
   width: 150px;
   font-size: 20px; /* Increased font size */
   font-family: "Montserrat", sans-serif;
-  background-color: #1e2a78; /* Button background color */
+  background-color: #000000; /* Button background color /                             / changed*/
   padding: 10px 20px;
   border-radius: 10px;
   margin-top: 10px; /* Corrected typo */
-  color: #fff; /* Text color */
+  color: #fff; /* Text color /                                                       / changed*/
   cursor: pointer; /* Pointer cursor for buttons */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
   border: none; /* Removed border */
@@ -124,8 +143,8 @@ opacity: 0.7 ;
 }
 
 .navbut:hover {
-  background-color: #ffffff;   /* Hover background color */
-  color: #1e2a78; /* Hover text color */
+  background-color: #000000;   /* Hover background color /                                / changed*/
+  color: #3aaf9f; /* Hover text color /                                 / changed*/
 /*  border: 2px solid #8e93b0; /* Border on hover */
 text-transform: uppercase;
 }
@@ -137,7 +156,7 @@ text-transform: uppercase;
   width: 150px;
   font-size: 20px; /* Increased font size */
   font-family: "Montserrat", sans-serif;
-  background-color: #1e2a78; /* Button background color */
+  background-color: #3aaf9f; /* Button background color /                 / changed*/
   padding: 10px 20px;
   border-radius: 10px;
   margin-top: 10px; /* Corrected typo */
@@ -151,23 +170,23 @@ text-transform: uppercase;
 
 .navbur:hover {
   background-color: #ffffff;   /* Hover background color */
-  color: #1e2a78; /* Hover text color */
+  color: #000000; /* Hover text color /                                     / changed*/
  /* border: 2px solid #8e93b0; /* Border on hover */
  text-transform: uppercase;
 }
 
- .search-container {
-      display: flex;
-      align-items: center;
-      background-color: #1e2a78;
-      
-    }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #3aaf9f;                                   /* changed*/
+   
+}
 
     .search-stocks {
       
       margin-right: 10px;
       font-weight: bold;
-      background-color: #1e2a78;
+      background-color: #3aaf9f;                                       /* changed*/
     }
 
     .searchbar {
@@ -185,13 +204,13 @@ text-transform: uppercase;
     }
 
     .search-icon {
-  background: #1e2a78;
-  color: #fff;
-  border: none;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
+      background: #3aaf9f;                                                  /* changed*/
+      color: #fff;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      cursor: pointer;
+      font-size: 20px;
+    }
 
     .search-icon:hover {
       background: #333;
@@ -230,20 +249,71 @@ th, td {
   padding: 15px;
   border: 1px solid #333; /* Dark border color */
   text-align: center;
+  color: white;                                                  /* changed*/ 
 }
 
 th {
-  background-color: #1e2a78; /* Background color */ /* Dark background color for table header */
-  color: white; /* Text color for table header */
+  background-color: #3aaf9f; /* Background color /                   / changed*/ 
+  color: white; /* Text color for table header /                     / changed*/ 
 }
 
 /* Additional styles for better appearance */
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  color: white;
 }
 
 /* Shift the table to the right */
 .table-container {
   justify-content: flex-end;
+ 
+}
+
+.black-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 30px 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  margin-right: 20px;
+  color: #615d5d;
+}
+
+.footer-section h2 {
+  font-size: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.address i {
+  margin-right: 5px;
+}
+
+.copyright {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
 }

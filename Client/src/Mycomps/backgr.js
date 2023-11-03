@@ -10,10 +10,11 @@ export default function bg() {
     <div style={{
       width:'100%',
       height:'100%',
-      backgroundImage :`url(${im})`
+      
+     
 
     }}>
-    
+    <img  src={im}  alt=""/>
    
     <img  src={im1}  className="img1" alt=""/>
     <img  src={im2}  className="img1" alt=""/>

@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="nav">
   <div className="navbarmain">
-  <img  src={logo}  className="logoimg" alt=""/>
+ <h1 >SkyView Capital</h1>
    </div>
     <div className="navright">
       
@@ -13,7 +13,7 @@ export default function Navbar() {
         
           <a className="navbut" font="Montserrat" aria-current="page" href="#">learn</a>
         
-          <a className="navbur" font="Montserrat" background-color =" #282c34 " aria-current="page" href="#">profile</a>
+          <a className="navbur" font="Montserrat" background-color =" #282c34 " aria-current="page" href="#">profile ▽</a>
        
 
     </div>
