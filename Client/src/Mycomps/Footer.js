@@ -7,9 +7,10 @@ function Footer() {
         <section>
           <div className="row">
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold">SkyView Capital</h6>
+            <h6 className="text-uppercase mb-4 font-weight-bold">SkyView Capital</h6>
               <p>
-              Empower your financial decisions with our Stock Predictor App's data-driven insights and forecasts.              </p>
+              Empower your financial decisions with our Stock Predictor App's 
+              data-driven insights and forecasts.</p>
             </div>
 
             <hr className="w-100 clearfix d-md-none" />
@@ -66,26 +67,29 @@ function Footer() {
           <div className="row d-flex align-items-center">
             <div className="col-md-7 col-lg-8 text-center text-md-start">
               <div className="p-3" >
-                <p style={{textAlign :'centre'}}>© 2023 Copyright: <a className="text-white" href="">x27.2</a> </p>
+                <p style={{textAlign: "center"}}>© 2023 Copyright: x27.2 - All Rights Reserved</p>
+                <p style={{textAlign: "center"}}>For queries contact us: Manager, AF-27, 1st floor, A-wing, Jawahar Bhawan, IIT Roorkee, Roorkee, Uttarakhand -247667, India
+                </p>
               </div>
             </div>
 
             <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-              <a className="btn btn-outline-light btn-floating m-1 text-white" role="button">
-              <img src='' style={{width:'30%', height: '30%'}}></img>
+            <a>Connect</a>
+            <a>&nbsp;&nbsp;&nbsp;</a>
+              <a href="https://twitter.com/OmAren05894987" role="button">
+              <img src='https://www.vectorlogo.zone/logos/twitter/twitter-tile.svg' style={{width:'10%', height: '10%'}}></img>
               </a>
-
-              <a className="btn btn-outline-light btn-floating m-1 text-white" role="button">
-                <i className="fab fa-twitter"></i>
+              <a>&nbsp;&nbsp;&nbsp;</a>
+              <a href="https://www.facebook.com/om.aren.3517?mibextid=ZbWKwL" role="button">
+              <img src='https://www.vectorlogo.zone/logos/facebook/facebook-tile.svg' style={{width:'10%', height: '10%'}}></img>
               </a>
-
-              <a className="btn btn-outline-light btn-floating m-1 text-white" role="button">
-                <img src='https://www.vectorlogo.zone/logos/google/google-icon.svg' style={{width:'30%', height: '30%'}}></img>
-                
+              <a>&nbsp;&nbsp;&nbsp;</a>
+              <a href="https://www.linkedin.com/in/aaditya-aren-992221275/" role="button">
+                <img src='https://www.vectorlogo.zone/logos/linkedin/linkedin-tile.svg' style={{width:'10%', height: '10%'}}></img>
               </a>
-
-              <a className="btn btn-outline-light btn-floating m-1 text-white" role="button">
-                <i className="fab fa-instagram"></i>
+              <a>&nbsp;&nbsp;&nbsp;</a>
+              <a href="https://instagram.com/aaditya_aren.01?igshid=OGQ5ZDc2ODk2ZA==" role="button">
+              <img src='https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg' style={{width:'10%', height: '10%'}}></img>
               </a>
             </div>
           </div>
