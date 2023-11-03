@@ -50,6 +50,9 @@ if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
 
+app.post('/model', async(req,res) => {
+  console.log(req.body)
+})
 // v1 api routes
 app.use('/v1', routes);
 
@@ -63,5 +66,6 @@ app.use(errorConverter);
 
 // handle error
 app.use(errorHandler);
+
 
 module.exports = app;
