@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import "../stylesheets/home.css";
 
-export default function PredByInput() {
+export default function PredByInput(props) {
   const [startDate, setStartDate] = useState("");
-  const [endtDate, setEndDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [company, setCompany] = useState("");
   const [responseText, setResponseText] = useState("");
   
+  const token = props.token;
   const handleStartChange = (e) => {
     setStartDate(e.target.value);
   };
@@ -23,20 +24,29 @@ export default function PredByInput() {
 
     const data = {
       startDate:startDate,
-      endtDate:endtDate,
+      endDate:endDate,
       company:company
     }
 
     console.log(data)
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',
+                  'Authorization':`Bearer ${token}` },
+      body: JSON.stringify(data)
+  };
 
+  // {
+  //   method: "POST",
+  //   headers: {
+  //     "Authorization" : `Bearer ${token}`,
+  //   },
+  //   body: JSON.stringify({
+  //     "hi":"hello"
+  //   }),
+  // }
     try {
-      const response = await fetch("https://localhost:5000/model", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch("http://localhost:5000/v1/ml", requestOptions);
 
       if (response.ok) {
         const data = await response.json();

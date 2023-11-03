@@ -9,7 +9,9 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageUsers'), validate(mlValidation.getUserInput), mlController.getPrediction)
+  .post(auth('manageUsers'),validate(mlValidation.getUserInput),mlController.getUserInput)
+
+  // .post(auth('manageUsers'), validate(mlValidation.getUserInput), mlController.getPrediction)
 
 router
   .route('/:userId')

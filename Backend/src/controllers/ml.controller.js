@@ -3,41 +3,49 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
+const request = require('request');
+
+
 
 const getPrediction = catchAsync(async (req, res) => {
     console.log(req.body);
+    console.log(req.headers.authorization)
+    // const data=req.body;
+
 })
 
-const createUser = catchAsync(async (req, res) => {
-  const user = await userService.createUser(req.body);
-  res.status(httpStatus.CREATED).send(user);
+
+
+
+const getUserInput = catchAsync(async (req, res) => {
+  console.log(req.body);
+  const data=req.body;
+
+  const options = {
+    url: 'http://localhost:6969/model',
+    json: true,
+    body: {
+        company: data.company,
+        endDate: data.startDate,
+        startDate: data.endDate
+    },
+    headers: {
+        'Authorization': 'Bearer YourAccessToken', // Add your desired headers here
+        'Token': `${process.env.SERVER_SECRET}` // You can add more headers as needed
+    }
+};
+
+  request.post(options, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(`Status: ${res.statusCode}`);
+    console.log(body);
 });
 
-const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name', 'role']);
-  const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await userService.queryUsers(filter, options);
-  res.send(result);
-});
-
-const getUser = catchAsync(async (req, res) => {
-  const user = await userService.getUserById(req.params.userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
-  }
-  res.send(user);
-});
-
-const updateUser = catchAsync(async (req, res) => {
-  const user = await userService.updateUserById(req.params.userId, req.body);
-  res.send(user);
-});
-
-const deleteUser = catchAsync(async (req, res) => {
-  await userService.deleteUserById(req.params.userId);
-  res.status(httpStatus.NO_CONTENT).send();
-});
+})
 
 module.exports = {
-  getPrediction
+  getPrediction,
+  getUserInput
 };

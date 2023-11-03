@@ -4,14 +4,22 @@ import Backg from "../Mycomps/backgr";
 import Seacrhst from "../Mycomps/searchst";
 import News from "../Mycomps/news";
 import Predin  from "../Mycomps/predbyinp";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Graph from '../Mycomps/graph';
 import Footerc from "../Mycomps/Footer"
 
+
 export default function Home() {
   const[isSubmitted, setIsSubmitted] = useState(false)
-
-
+  const [token, setToken] = useState('')
+  
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    if (token) {
+     setToken(token);
+     alert(token)
+    }
+  }, []);
   return (
   <>
   <Navbar/>
@@ -19,7 +27,7 @@ export default function Home() {
   <Seacrhst isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/> 
   <br></br>
   {isSubmitted && <Graph/>} 
-  <Predin/>  
+  <Predin token={token}/>  
   <br></br>
   <News/>
   <Footerc/>

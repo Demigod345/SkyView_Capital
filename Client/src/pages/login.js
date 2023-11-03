@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../stylesheets/login.css";
 
@@ -9,7 +10,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
+  const [token,setToken] =useState("")
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -22,9 +23,6 @@ function Login() {
 
   const handleSignUpClick = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(name);
-    console.log(password);
 
     const data = {
       email: email,
@@ -40,7 +38,7 @@ function Login() {
         },
         body: JSON.stringify(data),
       });
-
+      
       if (response.ok) {
         const data = await response.json();
         console.log(data.tokens.access.token);
@@ -52,11 +50,13 @@ function Login() {
       setResponseText(`Error: ${error.message}`);
     }
   };
-
+  
+  useEffect(() => {
+    localStorage.setItem('token', JSON.stringify(token));
+    // navigate("home");
+  }, [token]);
   const handleSignInClick = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
 
     const data = {
       email: email,
@@ -74,8 +74,10 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.tokens.access.token);
-        navigate("home");
+        setToken(data.tokens.access.token);
+        setTimeout(() => {
+          navigate("home")
+        }, 1000);
       } else {
         setResponseText(`Error: ${response.status} - ${response.statusText}`);
       }
@@ -94,7 +96,9 @@ function Login() {
           Enter your personal details<br></br> and start a journey with us
           </p>
           <br></br>
-          <a className="button sign-up" href="#cover">
+          <a className="button sign-up" href="#cover" style={{
+            'width':'auto',
+          }}>
             Sign Up
           </a>
           <h1 className="sign-in">Welcome Back!</h1>
@@ -103,7 +107,10 @@ function Login() {
             info
           </p>
           <br></br>
-          <a className="button sign-in" href="#">
+          <a className="button sign-in" style={{
+            "width":"auto",
+            // 'border-radius':'15px'
+          }} href="#">
             Sign In
           </a>
   
