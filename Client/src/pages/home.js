@@ -6,6 +6,7 @@ import News from "../Mycomps/news";
 import Predin  from "../Mycomps/predbyinp";
 import { useState } from 'react';
 import Graph from '../Mycomps/graph';
+import Footerc from "../Mycomps/Footer"
 
 export default function Home() {
   const[isSubmitted, setIsSubmitted] = useState(false)
@@ -21,6 +22,7 @@ export default function Home() {
   <Predin/>  
   <br></br>
   <News/>
+  <Footerc/>
  
    </>
   );

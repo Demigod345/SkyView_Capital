@@ -4,9 +4,10 @@ import "../stylesheets/home.css";
 
 export default function news() {
     return (
-      <div className="App">
+      <div className="newsbody">
         <h1>Companies Information</h1>
-        <table align ="center">
+        <style>{"table{border:1px white;}"}</style>
+        <table  align ="center">
           <thead>
             <tr>
               <th>Ticker</th>

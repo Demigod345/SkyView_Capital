@@ -17,7 +17,8 @@ export default function PredByInput() {
             <option value='AMZN-amazon'/>
             <option value='NVDA-nvadia'/>
           </datalist>
-          <input type="submit" className="search"></input>
+          
+          <input type="submit" ></input>
          
         </div>
       </div>

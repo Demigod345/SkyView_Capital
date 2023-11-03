@@ -11,7 +11,6 @@ export default function bg() {
       width:'100%',
       height:'100%',
       
-     
 
     }}>
     <img  src={im}  alt=""/>
