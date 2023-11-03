@@ -19,7 +19,7 @@ def yo():
 def predict(): 
 
     secretKey=request.headers.get('Token')
-    if(secretKey!=os.getenv('SECRET_KEY')):
+    if(secretKey!=os.getenv('SERVER_SECRET')):
         print("NOT VERIFIED")
         return "invalid request"
     else:
