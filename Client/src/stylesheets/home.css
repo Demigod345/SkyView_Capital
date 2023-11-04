@@ -107,16 +107,17 @@ opacity: 0.7 ;
   }
 }
 /* Stylish Navigation Bar */
+/* Stylish Navigation Bar */
 .nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; /* Increased padding for better spacing */
+  padding: 3px; /* Increased padding for better spacing */
   background-color: #3aaf9f; /* Background color /                              / changed*/
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
   background-color: black;  
-  height:150px;                                                          /* changed*/
+  height:70px;                                                          /* changed*/
   
 }
 
@@ -124,7 +125,9 @@ opacity: 0.7 ;
   font-family:"Montserrat" ;
   width: 30%;
   position: relative;
-    background-color: black;                                     /* changed*/
+    background-color: black;    
+    
+    /* changed*/
 }
 
 .navright {
@@ -185,6 +188,33 @@ text-transform: uppercase;
  /* border: 2px solid #8e93b0; /* Border on hover */
  text-transform: uppercase;
 }
+.profile-dropdown {
+  position: relative;
+  height: 40px; /* Adjust the height as needed */
+  
+}
+
+.navbur {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  width: 150px;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #3aaf9f;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: 40px; /* Set a fixed height to prevent movement */
+  
+}
+
 
 .search-container {
   display: flex;
@@ -212,6 +242,7 @@ text-transform: uppercase;
       outline: none;
       margin-left: 40px; 
       background-color: #eeeff1;
+      
     }
 
     .search-icon {
@@ -224,6 +255,7 @@ text-transform: uppercase;
     }
 
     .search-icon:hover {
+      
       background: #333;
       
     }
@@ -274,6 +306,12 @@ h1 {
   margin-bottom: 20px;
   color: white;
 }
+.bgmain {
+  width: 100%;
+  height: 200vmin;
+  background-color: #222121; /* Dark grey background color */
+}
+
 
 /* Shift the table to the right */
 .table-container {
@@ -327,4 +365,55 @@ ul li a {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 10px 0;
+}
+
+
+
+
+
+
+
+
+.profile-content {
+  position: absolute;
+  top: 150%; /* Position the dropdown below the profile button */
+  right: 0; /* Position the dropdown to the right */
+  width: 200px; /* Adjust the width as needed */
+  background-color: rgb(9, 71, 17) ; /* Background color for the dropdown */
+  color: white;
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-family: "Aerial", sans-serif;
+ 
+}
+
+.user-name {
+  font-weight: bolder;
+  margin: 5px 0;
+}
+
+.user-email {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.logout-button {
+  background-color: #e74c3c; /* Background color for the logout button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c0392b; /* Hover background color for the logout button */
 }

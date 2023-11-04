@@ -63,12 +63,12 @@ def predict_price(start_year, start_month, start_date, end_year, end_month, end_
 
 
 def predict_sentiment():
-    """ tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
+    tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
     model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
     tokens = tokenizer.encode('Tesla is changing CEO, but', return_tensors='pt')
     result = model(tokens)
     predicted_sentiment = (torch.argmax(result.logits)+1).item()
-    print(predicted_sentiment) """
+    return predicted_sentiment
 
 
 def technical_analysis(start_year, start_month, start_date, end_year, end_month, end_date, company):

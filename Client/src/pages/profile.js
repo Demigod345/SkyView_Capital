@@ -1,31 +1,72 @@
+import React from 'react';
 
-import '../stylesheets/profile.css';
-import { useState } from 'react';
+const Profile = () => {
 
+ const options = [
 
-export default function profile() {
-  return (
-    <div >
-      <h1>My Profile</h1>
-      <div className="profile-item">
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" placeholder="Your Name" />
-      </div>
-      <div className="profile-item">
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" placeholder="youremail@example.com" />
-      </div>
-      <div className="profile-item">
-        <label htmlFor="password">Change Password</label>
-        <input type="password" id="password" placeholder="New Password" />
-      </div>
-      <div className="profile-item">
-        <button className="verify-email-button">Verify Email</button>
-      </div>
-      <div className="profile-item">
-        <button className="logout-button">Log Out</button>
-      </div>
-    </div>
-  );
-}
+   { label: 'Fruit', value: 'fruit' },
+
+   { label: 'Vegetable', value: 'vegetable' },
+
+   { label: 'Meat', value: 'meat' },
+
+ ];
+
+ const [value, setValue] = React.useState('fruit');
+
+ const handleChange = (event) => {
+
+   setValue(event.target.value);
+
+ };
+
+ return (
+
+   <div>
+
+     <Dropdown
+
+       label="What do we eat?"
+
+       options={options}
+
+       value={value}
+
+       onChange={handleChange}
+
+     />
+
+     <p>We eat {value}!</p>
+
+   </div>
+
+ );
+
+};
+
+const Dropdown = ({ label, value, options, onChange }) => {
+
+ return (
+
+   <label>
+
+     {label}
+
+     <select value={value} onChange={onChange}>
+
+       {options.map((option) => (
+
+         <option value={option.value}>{option.label}</option>
+
+       ))}
+
+     </select>
+
+   </label>
+
+ );
+
+};
+
+export default Profile;
 
