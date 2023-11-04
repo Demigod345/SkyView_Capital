@@ -22,6 +22,10 @@ class Navbar extends Component {
           <h1>SkyView Capital</h1>
         </div>
         <div className="navright">
+        <a className="navbut" font="Montserrat" aria-current="page" href="#">
+            news
+          </a>
+
           <a className="navbut" font="Montserrat" aria-current="page" href="#">
             about
           </a>

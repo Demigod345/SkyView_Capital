@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../stylesheets/home.css';
 function Footer() {
   return (
     <footer className="text-center text-lg-start text-white" style={{ backgroundColor: '#000000' }}>
