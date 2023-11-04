@@ -5,6 +5,7 @@ import Login from './pages/login';
 import Profile from './pages/profile';
 import About from './pages/about';
 import NewsFeed from './pages/newsfeed';
+
 function App() {
   return (
     <>
