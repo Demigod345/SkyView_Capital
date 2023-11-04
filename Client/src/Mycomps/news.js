@@ -4,12 +4,12 @@ import "../stylesheets/home.css";
 
 export default function news() {
     return (
-      <div className="newsbody">
+      <div className="newsbody" >
         <h1>Companies Information</h1>
         <style>{"table{border:1px white;}"}</style>
-        <table  align ="center">
-          <thead>
-            <tr>
+        <table  align="center">
+          <thead >
+            <tr >
               <th>Ticker</th>
               <th>Company</th>
               <th>Market Cap</th>

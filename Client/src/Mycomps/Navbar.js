@@ -23,7 +23,7 @@ class Navbar extends Component {
         </div>
         <div className="navright">
         <a className="navbut" font="Montserrat" aria-current="page" href="#">
-            news
+            News
           </a>
 
           <a className="navbut" font="Montserrat" aria-current="page" href="#">
@@ -39,7 +39,7 @@ class Navbar extends Component {
             onMouseEnter={this.toggleProfileDropdown}
             onMouseLeave={this.toggleProfileDropdown}
           >
-            <a
+            <a 
               className="navbur"
               font="Montserrat"
               backgroundColor="#282c34"
