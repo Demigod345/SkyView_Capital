@@ -9,8 +9,8 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageUsers'),validate(mlValidation.getUserInput),mlController.getUserInput)
-
+  .post(auth('manageUsers'),mlController.getUserInput)
+  .put(auth('manageUsers'),mlController.getUserInput)
   // .post(auth('manageUsers'), validate(mlValidation.getUserInput), mlController.getPrediction)
 
 router

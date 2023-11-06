@@ -14,10 +14,11 @@ export default function Home() {
   const [token, setToken] = useState('')
   
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('token'));
+    var token = JSON.parse(localStorage.getItem('token'));
+    token=token.replace(/"/g, '');
     if (token) {
      setToken(token);
-     alert(token)
+    //  alert(token)
     }
   }, []);
   return (

@@ -42,16 +42,20 @@ export default function PredByInput(props) {
   //   }),
   // }
     try {
-      const response = await fetch("http://localhost:5000/v1/ml", {
+
+      const response = await fetch("http://localhost:5000/v1/ml/", {
         method: "POST",
         headers: {
+          'Content-Type': 'application/json', // Specify the Content-Type here
           "Authorization" : `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       });
 
+      console.log(response)
+
       if (response.ok) {
-        const data = await response.json();
+        const data = await response.data();
         alert(data);
         setResponseText(`Response: ${JSON.stringify(data)}`);
       } else {
@@ -79,11 +83,11 @@ export default function PredByInput(props) {
             style={{ color: "white" }}
           />
           <datalist id="stocks">
-            <option value="AAPLe-appl" />
-            <option value="MSFT-microsoft" />
-            <option value="GOOGL-google" />
-            <option value="AMZN-amazon" />
-            <option value="NVDA-nvadia" />
+            <option value="AAPL-Apple" />
+            <option value="MSFT-Microsoft" />
+            <option value="GOOGL-Google" />
+            <option value="AMZN-Amazon" />
+            <option value="NVDA-Nvidia" />
           </datalist>
           <input
             type="submit"

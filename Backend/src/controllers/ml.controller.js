@@ -18,30 +18,32 @@ const getPrediction = catchAsync(async (req, res) => {
 
 
 const getUserInput = catchAsync(async (req, res) => {
-  console.log(req.body);
   const data=req.body;
-
+  console.log(data)
   const options = {
     url: 'http://localhost:6969/model',
     json: true,
     body: {
         company: data.company,
-        endDate: data.startDate,
-        startDate: data.endDate
+        endDate: data.endDate,
+        startDate: data.startDate
     },
     headers: {
-        'Authorization': 'Bearer YourAccessToken', // Add your desired headers here
         'Token': `${process.env.SERVER_SECRET}` // You can add more headers as needed
     }
 };
 
-  request.post(options, (err, res, body) => {
+  request.post(options, async(err, response, body) => {
+    // console.log(res)
     if (err) {
-        return console.log(err);
+      return console.log(err);
     }
-    console.log(`Status: ${res.statusCode}`);
-    console.log(body);
+    console.log(`Status: ${response.statusCode}`);
+    if(response.statusCode == 200){
+      console.log("bla-bla")
+    }
 });
+
 
 })
 
