@@ -27,7 +27,7 @@ def build_dataset(sequence, n_steps):
     seq_y = sequence[end_ix]
     X.append(seq_x)
     y.append(seq_y)
-  return np.array(X), np.array(y)
+  return np.array(X, dtype=float), np.array(y, dtype=float)
 
 
 def predict_price(startdate, enddate, batch_size, prediction_days, company):
@@ -38,7 +38,7 @@ def predict_price(startdate, enddate, batch_size, prediction_days, company):
     df = yf.download(stock_list, period='1d', start=start, end=end)
 
     seq = df['Close']
-    seq = np.array(seq)
+    seq = np.array(seq, dtype=float)
     n_steps = batch_size
     n_features = 1
     X, Y = build_dataset(seq, n_steps)
@@ -55,14 +55,14 @@ def predict_price(startdate, enddate, batch_size, prediction_days, company):
     x_input = x_input.reshape((1, n_steps, n_features))
     yhat = model.predict(x_input, verbose=0)
     x_input = seq[-n_steps:]
-    temp_input = list(x_input)
+    temp_input = np.array(x_input, dtype=float)
 
     predictions = []
     for i in range(prediction_days):
-        x_input = np.array(temp_input).astype('float32')
+        x_input = np.array(temp_input, dtype=float)
         x_input = x_input.reshape((1, n_steps, n_features))
         yhat = model.predict(x_input, verbose=0)
-        temp_input.append(yhat)
+        temp_input = np.append(temp_input, yhat)
         temp_input = temp_input[1:]
         predictions.append(yhat)
     
