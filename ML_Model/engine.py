@@ -49,7 +49,7 @@ def predict_price(startdate, enddate, batch_size, prediction_days, company):
     model.add(LSTM(27, activation='relu'))
     model.add(Dense(1))
     model.compile(optimizer='adam', loss='mse')
-    model.fit(X, Y, epochs=10, verbose=1)
+    model.fit(X, Y, epochs=15, verbose=1)
 
     x_input = seq[-n_steps:]
     x_input = x_input.reshape((1, n_steps, n_features))
