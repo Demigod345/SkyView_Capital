@@ -1,7 +1,8 @@
 from flask import Flask, request 
 import os
 from dotenv import load_dotenv
-# import engine
+import time
+import engine
 # print(engine.technical_analysis())
 load_dotenv()
 
@@ -31,6 +32,13 @@ def predict():
         startDate=request.get_json()['startDate']
         endDate=request.get_json()['endDate']
         # duration=request.get_json()['duration']
+        time.sleep(500)
+        #yaha par processing kar and data bhej
+        prediction_days = 3
+        predicted_prices = engine.predict_price(startDate, endDate, prediction_days, 7,company)
+        predicted_sentiment = engine.predict_sentiment()
+        advise = engine.technical_analysis(startDate, endDate, company)
+
         return "successful"
 if __name__ == "__main__":        
     app.run(debug=True, port=6969)                     

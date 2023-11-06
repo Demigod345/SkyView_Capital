@@ -22,10 +22,10 @@ def build_dataset(sequence, n_steps):
   return np.array(X), np.array(y)
 
 
-def predict_price(start_year, start_month, start_date, end_year, end_month, end_date, batch_size, prediction_days, company):
+def predict_price(startdate, enddate, batch_size, prediction_days, company):
     
-    start = dt.datetime(start_year, start_month, start_date)
-    end = dt.datetime(end_year, end_month, end_date)
+    start = dt.datetime(startdate)
+    end = dt.datetime(enddate)
     stock_list = [company]
     df = yf.download(stock_list, period='1d', start=start, end=end)
 
@@ -71,10 +71,10 @@ def predict_sentiment():
     return predicted_sentiment
 
 
-def technical_analysis(start_year, start_month, start_date, end_year, end_month, end_date, company):
+def technical_analysis(startdate, enddate, company):
     
-    start = dt.datetime(start_year, start_month, start_date)
-    end = dt.datetime(end_year, end_month, end_date)
+    start = dt.datetime(startdate)
+    end = dt.datetime(enddate)
     stock_list = [company]
     df = yf.download(stock_list, period='1d', start=start, end=end)
     vol = df['Volume']
