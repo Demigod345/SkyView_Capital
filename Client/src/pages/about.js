@@ -2,7 +2,11 @@ import React from "react";
 import Navbar from "../Mycomps/Navbar";
 import Footerc from "../Mycomps/Footer";
 import "../stylesheets/About.css"; // Import the CSS file
-
+import imag1 from "./propics/aren.png";
+import imag2 from "./propics/alind.png";
+import imag3 from "./propics/divyansh.png";
+import imag4 from "./propics/ishaan.png";
+import imag5 from "./propics/kunal.png";
 function About() {
   return (
     <div>
@@ -39,9 +43,9 @@ function About() {
           <div className="column">
             <div className="card card5">
               <img
-                src="/w3images/team1.jpg"
+                src={imag1}
                 alt="Jane"
-                style={{ width: "100%" }}
+                style={{ width: "80%" ,alignSelf:"center"}}
               />
               <div className="container container5">
                 <h2>Aaditya Aren</h2>
@@ -65,9 +69,10 @@ function About() {
           <div className="column">
             <div className="card card1">
               <img
-                src="/w3images/team2.jpg"
-                alt="Mike"
-                style={{ width: "100%" }}
+                src={imag2
+                }
+                alt="Alind"
+                style={{ width: "80%" ,alignSelf:"center"}}
               />
               <div className="container container1">
                 <h2>Alind Sharma</h2>
@@ -92,9 +97,9 @@ function About() {
           <div className="column">
             <div className="card card2">
               <img
-                src="/w3images/team2.jpg"
-                alt="Mike"
-                style={{ width: "100%" }}
+                src={imag3}
+                alt="DJ"
+                style={{ width: "80%" ,alignSelf:"center"}}
               />
               <div className="container container2">
                 <h2>Divyansh Jain</h2>
@@ -118,9 +123,9 @@ function About() {
           <div className="column">
             <div className="card card3">
               <img
-                src="/w3images/team2.jpg"
-                alt="Mike"
-                style={{ width: "100%" }}
+                src={imag4}
+                alt="Ishaan"
+                style={{ width: "80%" , alignSelf:"center" }}
               />
               <div className="container container3">
                 <h2>Ishaan Jain</h2>
@@ -144,9 +149,9 @@ function About() {
           <div className="column">
             <div className="card card4">
               <img
-                src="/w3images/team3.jpg"
-                alt="John"
-                style={{ width: "100%" }}
+                src={imag5}
+                alt="Kunal"
+                style={{ width: "80%" ,alignSelf:"center"}}
               />
               <div className="container container4">
                 <h2>Kunal Bansal</h2>
