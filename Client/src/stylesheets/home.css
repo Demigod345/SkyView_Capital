@@ -86,7 +86,6 @@ opacity: 0.7 ;
 }
 
 .title{
-  
   margin-left: 50px;
   padding-right:10px ;
   font-family:"Montserrat";
@@ -113,20 +112,20 @@ opacity: 0.7 ;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px; /* Increased padding for better spacing */
+  padding: 4.5px; /* Increased padding for better spacing */
   background-color: #3aaf9f; /* Background color /                              / changed*/
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
   background-color: black;  
-  height:70px;                                                          /* changed*/
+  height:73px;                                                          /* changed*/
   
 }
 
 .navbarmain {
   font-family:"Montserrat" ;
   width: 30%;
-  position: relative;
-    background-color: black;    
-    
+  position: relative;    
+  margin-top: 10px;
+  color: #000;
     /* changed*/
 }
 
@@ -145,7 +144,7 @@ opacity: 0.7 ;
   font-size: 20px; /* Increased font size */
   font-family: "Montserrat", sans-serif;
   background-color: #000000; /* Button background color /                             / changed*/
-  padding: 10px 20px;
+  padding: 6px 20px;
   border-radius: 10px;
   margin-top: 10px; /* Corrected typo */
   color: #fff; /* Text color /                                                       / changed*/

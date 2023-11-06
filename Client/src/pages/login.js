@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 import "../stylesheets/login.css";
 
 function Login() {
@@ -24,6 +25,16 @@ function Login() {
   const handleSignUpClick = async (e) => {
     e.preventDefault();
 
+    if (!email || !password || !name) {
+      // Display an alert if any of the required fields are empty
+      Swal.fire({
+        title: "Error",
+        text: "Please fill in all the required fields",
+        icon: "error",
+      });
+      return; // Exit the function
+    }
+
     const data = {
       email: email,
       name: name,
@@ -42,6 +53,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log(data.tokens.access.token);
+        
         navigate("home");
       } else {
         setResponseText(`Error: ${response.status} - ${response.statusText}`);
@@ -49,15 +61,31 @@ function Login() {
     } catch (error) {
       setResponseText(`Error: ${error.message}`);
     }
+    Swal.fire({
+      title: "Sign Up Successful",
+      text: "You have successfully signed up!",
+      icon: "success",
+    });
   };
   
   useEffect(() => {
     localStorage.setItem('token', JSON.stringify(token));
     // navigate("home");
   }, [token]);
+  
   const handleSignInClick = async (e) => {
     e.preventDefault();
 
+    if (!email || !password) {
+      // Display an alert if any of the required fields are empty
+      Swal.fire({
+        title: "Error",
+        text: "Please fill in both email and password fields",
+        icon: "error",
+      });
+      return; // Exit the function
+    }
+    
     const data = {
       email: email,
       password: password,
@@ -75,6 +103,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         setToken(data.tokens.access.token);
+        
         setTimeout(() => {
           navigate("home")
         }, 1000);
@@ -84,6 +113,11 @@ function Login() {
     } catch (error) {
       setResponseText(`Error: ${error.message}`);
     }
+    Swal.fire({
+      title: "Sign In Successful",
+      text: "You have successfully signed in!",
+      icon: "success",
+    });
   };
 
   return (
@@ -91,25 +125,23 @@ function Login() {
       <div id="info"></div>
       <div id="container" style={{ border: "1rem", borderColor: "white" }}>
         <div id="cover">
-          <h1 className="sign-up">Hello, Friend!</h1>
+          <h1 className="sign-up">Welcome Back!</h1>
           <p className="sign-up">
-          Enter your personal details<br></br> and start a journey with us
+          To keep connected with us please<br></br>signin with your personal details.
           </p>
           <br></br>
+          
           <a className="button sign-up" href="#cover" style={{
             'width':'auto',
           }}>
             Sign Up
           </a>
-          <h1 className="sign-in">Welcome Back!</h1>
-          <p className="sign-in">
-            To keep connected with us please<br></br> login with your personal
-            info
+          <h1 className="sign-in">Hello, Friend! </h1>
+          <p className="sign-in">Enter your personal details<br></br> and start a journey with us.
           </p>
           <br></br>
           <a className="button sign-in" style={{
             "width":"auto",
-            // 'border-radius':'15px'
           }} href="#">
             Sign In
           </a>
@@ -117,7 +149,7 @@ function Login() {
         </div>
         <div id="login">
           <h1>Sign In</h1>
-          <p>or use your email account:</p>
+          
           <form onSubmit={handleSignInClick}>
             <input
               type="email"
@@ -142,7 +174,6 @@ function Login() {
         </div>
         <div id="register">
           <h1>Create Account</h1>
-          <p>or use your email for registration:</p>
           <form onSubmit={handleSignUpClick}>
             <input
               type="text"

@@ -19,7 +19,7 @@ class Navbar extends Component {
     return (
       <nav className="nav">
         <div className="navbarmain">
-          <h1>SkyView Capital</h1>
+          <h1 style={{color:''}} aaa>SkyView Capital</h1>
         </div>
         <div className="navright">
         <a className="navbut" font="Montserrat" aria-current="page" href="#">
