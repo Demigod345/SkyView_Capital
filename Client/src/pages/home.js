@@ -2,7 +2,6 @@ import '../stylesheets/home.css';
 import Navbar from "../Mycomps/Navbar";
 import Backg from "../Mycomps/backgr";
 import Seacrhst from "../Mycomps/searchst";
-import News from "../Mycomps/news";
 import Predin  from "../Mycomps/predbyinp";
 import { useState, useEffect } from 'react';
 import Graph from '../Mycomps/graph';
@@ -30,7 +29,6 @@ export default function Home() {
   {isSubmitted && <Graph/>} 
   <Predin token={token}/>  
   <br></br>
-  <News/>
   <Footerc/>
  
    </>

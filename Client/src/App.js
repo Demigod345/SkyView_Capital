@@ -4,7 +4,6 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
 import About from "./pages/about";
-import NewsFeed from "./pages/newsfeed";
 import ProtectedRoutes from "./pages/protectedroutes";
 import Learn from "./pages/learn";
 import News from "./Mycomps/news";
@@ -21,7 +20,6 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
-            <Route path="/newsfeed" element={<NewsFeed />} />
             <Route path="/learn" element={<Learn />} />
             <Route path="/news" element={<News />} />
           </Route>

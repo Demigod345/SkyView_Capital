@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
+import Navbar from "../Mycomps/Navbar";
+import Footerc from "../Mycomps/Footer";
+import "../stylesheets/About.css";
 
 class StockMarketLearn extends Component {
   constructor(props) {
     super(props);
 
-   this.state = {
+    this.state = {
       lessons: [
         {
           id: 1,
           title: 'Introduction to Stock Markets',
           content: '...',
           link: 'https://www.investopedia.com/terms/s/stockmarket.asp',
+        },
+        {
+          id: 4,
+          title: 'How to invest in Stocks',
+          content: '...',
+          link: 'https://www.investopedia.com/articles/basics/06/invest1000.asp',
+        },
+        {
+          id: 5,
+          title: 'Introduction to Stocks and Markets',
+          content: '...',
+          link: 'https://zerodha.com/varsity/module/introduction-to-stock-markets/',
         },
         {
           id: 2,
@@ -30,6 +45,10 @@ class StockMarketLearn extends Component {
         {
           title: 'Finance Basics',
           url: 'https://www.khanacademy.org/college-careers-more/personal-finance',
+        },
+        {
+          title: 'What are Financial Resources',
+          url: 'https://online.york.ac.uk/financial-resources-what-are-they-and-how-are-they-managed/',
         },
         {
           title: 'Financial Planning',
@@ -82,8 +101,6 @@ class StockMarketLearn extends Component {
      
      
     ],
-        // ... (other books)
-      
       youtubeLinks: [
         {
           title: 'Stock Market Basics',
@@ -99,20 +116,62 @@ class StockMarketLearn extends Component {
         },
         // Add more YouTube links
       ],
+      popularSites: [
+        {
+          title: 'Yahoo Finance',
+          url: 'https://finance.yahoo.com/',
+        },
+        {
+          title: 'Bloomberg',
+          url: 'https://www.bloomberg.com/markets',
+        },
+        {
+          title: 'CNBC',
+          url: 'https://www.cnbc.com/business/',
+        },
+        {
+          title: 'NASDAQ',
+          url: 'https://www.nasdaq.com/',
+        },
+        {
+          title: 'Investing',
+          url: 'investing.com',
+        },
+        // Add more popular stock-related websites
+      ],
     };
   }
 
+ 
   render() {
     const containerStyle = {
       display: 'flex',
       flexDirection: 'column',
+      
       alignItems: 'center',
       padding: '20px',
       fontFamily: 'LMRoman, serif', // Set the font to "LMRoman"
       color: 'white',
       textAlign: 'center', // Align everything to the center
     };
+    const blackContainerStyle = {
+      background: 'black',
+      width: '100%',
+      padding: '10px',
+      textAlign: 'center',
+    };
 
+    const blackHeadingStyle = {
+      fontSize: '42px',
+      marginBottom:'20px' ,
+      marginTop:'0px' ,
+      
+     fontfamily: 'Montserrat', 
+      height:'20px' ,
+      color: 'white',
+      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+    };
+    
     const headerStyleBlack = {
       background: 'black',  
       
@@ -174,64 +233,91 @@ class StockMarketLearn extends Component {
       textDecoration: 'underline', // Add underline to headings
     };
 
+
     return (
-      <div style={containerStyle}>
-        <header style={headerStyleBlack}>
-          <h1 style={bigHeadingStyle}>Stock Market Learning</h1>
+    <div>
+      <Navbar />
+      <div>
+        <header style={blackContainerStyle}>
+          <h1 style={blackHeadingStyle}>LEARN</h1>
         </header>
-        <div className="lessons" style={horizontalBookListStyle}>
-          {this.state.lessons.map((lesson) => (
-            <div key={lesson.id} style={lessonStyle}>
-              <h2 style={horizontalBookListStyle}>
-                <a href={lesson.link} style={linkStyle} target="_blank" rel="noopener noreferrer">
-                  {lesson.title}
-                </a>
-              </h2>
-              <p style={{ fontSize: '18px' }}>{lesson.content}</p>
-            </div>
-          ))}
-        </div>
-        <div className="finance-links">
-        <header style={headerStyleBlack}>
-            <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>Finance Resources</h2>
-          </header>
-          <div style={horizontalBookListStyle}>
-            {this.state.financeLinks.map((link, index) => (
-              <div key={index} style={horizontalBookItemStyle}>
-                <a href={link.url} style={linkStyle} target="_blank" rel="noopener noreferrer">
-                  {link.title}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="finance-books">
+        <div style={containerStyle}>
           <header style={headerStyleBlack}>
-            <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>Finance Related Books</h2>
+            <h1 style={bigHeadingStyle}>Stock Market Learning</h1>
           </header>
-          <div style={horizontalBookListStyle}>
-            {this.state.financeBooks.map((book, index) => (
-              <div key={index} style={horizontalBookItemStyle}>
-                <p style={{ fontSize: '20px', fontWeight: 'bold' }}>{book.title}</p>
+          <div className="lessons" style={horizontalBookListStyle}>
+            {this.state.lessons.map((lesson) => (
+              <div key={lesson.id} style={lessonStyle}>
+                <h2 style={horizontalBookListStyle}>
+                  <a href={lesson.link} style={linkStyle} target="_blank" rel="noopener noreferrer">
+                    {lesson.title}
+                  </a>
+                </h2>
+                <p style={{ fontSize: '18px' }}>{lesson.content}</p>
               </div>
             ))}
           </div>
-        </div>
-        <div className="youtube-links">
-        <header style={headerStyleBlack}>
-            <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>YouTube Learning</h2>
-          </header>
-          <div style={horizontalBookListStyle}>
-            {this.state.youtubeLinks.map((link, index) => (
-              <div key={index} style={horizontalBookItemStyle}>
-                <a href={link.url} style={linkStyle} target="_blank" rel="noopener noreferrer">
-                  {link.title}
-                </a>
-              </div>
-            ))}
+          <div className="finance-links">
+            <header style={headerStyleBlack}>
+              <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>Finance Resources</h2>
+            </header>
+            <div style={horizontalBookListStyle}>
+              {this.state.financeLinks.map((link, index) => (
+                <div key={index} style={horizontalBookItemStyle}>
+                  <h2 style={horizontalBookListStyle}></h2>
+                  <a href={link.url} style={linkStyle} target="_blank" rel="noopener noreferrer">
+                    {link.title}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="finance-books">
+            <header style={headerStyleBlack}>
+              <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>Finance Related Books</h2>
+            </header>
+            <div style={horizontalBookListStyle}>
+              {this.state.financeBooks.map((book, index) => (
+                
+                <div key={index} style={horizontalBookItemStyle}>
+                  <p style={{ fontSize: '20px', fontWeight: 'bold' }}>{book.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="youtube-links">
+            <header style={headerStyleBlack}>
+              <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>YouTube Learning</h2>
+            </header>
+            <div style={horizontalBookListStyle}>
+              {this.state.youtubeLinks.map((link, index) => (
+                <div key={index} style={horizontalBookItemStyle}>
+                  <a href={link.url} style={linkStyle} target="_blank" rel="noopener noreferrer">
+                    {link.title}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="popular-sites">
+            <header style={headerStyleBlack}>
+              <h2 style={{ fontSize: '24px', ...bigHeadingStyle }}>Popular Stock-Related Websites</h2>
+            </header>
+            <div style={horizontalBookListStyle}>
+              {this.state.popularSites.map((site, index) => (
+                
+                <div key={index} style={horizontalBookItemStyle}>
+                  <a href={site.url} style={linkStyle} target="_blank" rel="noopener noreferrer">
+                    {site.title}
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      <Footerc />
+    </div>
     );
   }
 }

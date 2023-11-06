@@ -42,7 +42,6 @@ export default function PredByInput(props) {
   //   }),
   // }
     try {
-
       const response = await fetch("http://localhost:5000/v1/ml/", {
         method: "POST",
         headers: {

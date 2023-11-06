@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-
+import Navbar from "../Mycomps/Navbar";
+import Footerc from "../Mycomps/Footer";
+import "../stylesheets/About.css";
 function News() {
   const [news, setNews] = useState([])
   useEffect(()=>{
@@ -11,6 +13,8 @@ function News() {
     })
   }, [])
   return (
+    <div>
+      <Navbar />
     <>
       <div className='container my-5'>
         <div className='row text-center'>
@@ -37,6 +41,8 @@ function News() {
         </div>
       </div>
     </>
+    <Footerc />
+    </div>
   )
 }
 
