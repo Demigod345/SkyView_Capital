@@ -67,6 +67,10 @@ def predict_price(startdate, enddate, batch_size, prediction_days, company):
         predictions.append(yhat)
     
     predictions = np.array(predictions)
+    df = df['Close']
+    prev_price = df.values.astype(float)
+    predictions = np.concatenate((prev_price, predictions))
+    
     return predictions;
 
 
