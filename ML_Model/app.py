@@ -3,6 +3,14 @@ import os
 from dotenv import load_dotenv
 import time
 import engine
+
+
+class predictions:
+    def __init__(self, predicted_prices, predicted_sentiment, advise):
+        self.predicted_prices = predicted_prices
+        self.predicted_sentiment = predicted_sentiment
+        self.advise = advise
+
 # print(engine.technical_analysis())
 load_dotenv()
 
@@ -35,10 +43,8 @@ def predict():
         time.sleep(500)
         #yaha par processing kar and data bhej
         prediction_days = 3
-        predicted_prices = engine.predict_price(startDate, endDate, prediction_days, 7,company)
-        predicted_sentiment = engine.predict_sentiment()
-        advise = engine.technical_analysis(startDate, endDate, company)
-
+        batch_size = 7
+        return_obj = engine.main(startDate, endDate, batch_size, prediction_days, company)
         return "successful"
 if __name__ == "__main__":        
     app.run(debug=True, port=6969)                     

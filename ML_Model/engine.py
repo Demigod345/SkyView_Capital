@@ -9,6 +9,14 @@ from keras.layers import Dense
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
+
+class predictions:
+    def __init__(self, predicted_prices, predicted_sentiment, advise):
+        self.predicted_prices = predicted_prices
+        self.predicted_sentiment = predicted_sentiment
+        self.advise = advise
+
+
 def build_dataset(sequence, n_steps):
   X, y = list(), list()
   for i in range(len(sequence)):
@@ -24,8 +32,8 @@ def build_dataset(sequence, n_steps):
 
 def predict_price(startdate, enddate, batch_size, prediction_days, company):
     
-    start = dt.datetime(startdate)
-    end = dt.datetime(enddate)
+    start = dt.datetime.strptime(startdate, "%Y-%m-%d")
+    end = dt.datetime.strptime(enddate, "%Y-%m-%d")
     stock_list = [company]
     df = yf.download(stock_list, period='1d', start=start, end=end)
 
@@ -73,8 +81,8 @@ def predict_sentiment():
 
 def technical_analysis(startdate, enddate, company):
     
-    start = dt.datetime(startdate)
-    end = dt.datetime(enddate)
+    start = dt.datetime.strptime(startdate, "%Y-%m-%d")
+    end = dt.datetime.strptime(enddate, "%Y-%m-%d")
     stock_list = [company]
     df = yf.download(stock_list, period='1d', start=start, end=end)
     vol = df['Volume']
@@ -105,12 +113,11 @@ def technical_analysis(startdate, enddate, company):
     return tech_ans;
 
 
-def Engine():
-    start_year = start_month = start_date = 0
-    end_year = end_month = end_date = 0
-    batch_size = 30                                 
-    prediction_days = 0
-    company = ''
-    predicted_price = predict_price()
-    positivity_score = predict_sentiment()
-    predicted_movement = technical_analysis()
+def main(startdate, enddate, batch_size, prediction_days, company):
+
+    predicted_prices = predict_price(startdate, enddate, batch_size, prediction_days,company)
+    predicted_sentiment = predict_sentiment()
+    advise = technical_analysis(startdate, enddate, company)
+
+    return_obj = predictions(predicted_prices, predicted_sentiment, advise)
+    return return_obj
