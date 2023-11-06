@@ -1,10 +1,9 @@
 body {
   font-family: LMRoman, Arial, Helvetica, sans-serif;
   margin: 0;
-  
 }
 body {
-  font-family: 'LMRoman', Arial, Helvetica, sans-serif;
+  font-family: "LMRoman", Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
@@ -19,7 +18,6 @@ body {
 }
 
 /* ... (existing styles) ... */
-
 
 .row {
   display: flex;
@@ -57,7 +55,7 @@ html {
 .about-section {
   padding: 50px;
   text-align: center;
- 
+
   background-color: #474e5d;
   color: white;
 }
@@ -78,15 +76,13 @@ html {
   color: white;
 }
 
-
-
 .title {
   color: grey;
   width: 300px;
 }
 
 .button {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   border: none;
   outline: 0;
   margin-bottom: 10px;
@@ -104,81 +100,76 @@ html {
   background-color: #555;
 }
 
-
-
 @media screen and (max-width: 650px) {
   .column {
-      width: 100%;
-      display: block;
+    width: 100%;
+    display: block;
   }
 }
 .card.card1:hover {
   border-color: rgb(255, 0, 0); /* Change the border color for the first card */
-  
- 
-  
+  border-width: 3px;
 }
 
 .card.card2:hover {
-  border-color: rgb(0, 255, 0); /* Change the border color for the second card */
-  ;
+  border-color: rgb(
+    0,
+    255,
+    0
+  ); /* Change the border color for the second card */
+  border-width: 3px;
 }
 
 .card.card3:hover {
-  border-color: #00E5FF; 
-
+  border-color: #00e5ff;
+  border-width: 3px;
 }
 
 .card.card4:hover {
-  border-color: rgb(255, 0, 162); /* Change the border color for the fourth card */
+  border-color: rgb(255, 0, 162);
+  border-width: 3px; /* Change the border color for the fourth card */
 }
 
 .card.card5:hover {
-  border-color:  rgb(238, 255, 5); /* Change the border color for the fifth card */
-
+  border-color: rgb(
+    238,
+    255,
+    5
+  ); /* Change the border color for the fifth card */
+  border-width: 3px;
 }
-.container.container1{
- 
-  color:white ;
+.container.container1 {
+  color: white;
 }
-.container.container2{
-
-  color:white ;
+.container.container2 {
+  color: white;
 }
-.container.container3{
-  
-  color:white ;
+.container.container3 {
+  color: white;
 }
-.container.container4{
- 
-  color:white ;
+.container.container4 {
+  color: white;
 }
-.container.container5{
-
-  color:white ;
+.container.container5 {
+  color: white;
 }
-.container.container1:hover{
+.container.container1:hover {
   padding: 0 16px;
   color: red;
-  
 }
-.container.container2:hover{
+.container.container2:hover {
   padding: 0 16px;
   color: rgb(0, 255, 0);
-  
 }
-.container.container3:hover{
+.container.container3:hover {
   padding: 0 16px;
-  color: #00E5FF;
-  
+  color: #00e5ff;
 }
-.container.container4:hover{
+.container.container4:hover {
   padding: 0 16px;
   color: rgb(255, 0, 162);
-  
 }
-.container.container5:hover{
+.container.container5:hover {
   padding: 0 16px;
   color: rgb(238, 255, 5);
-  
 }

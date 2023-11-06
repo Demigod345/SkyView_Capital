@@ -7,7 +7,6 @@ import About from "./pages/about";
 import ProtectedRoutes from "./pages/protectedroutes";
 import Learn from "./pages/learn";
 import News from "./Mycomps/news";
-
 function App() {
   return (
     <>

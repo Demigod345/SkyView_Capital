@@ -1,124 +1,66 @@
 import React, { useState } from "react";
-import "../stylesheets/home.css";
 
-export default function PredByInput(props) {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [company, setCompany] = useState("");
-  const [responseText, setResponseText] = useState("");
+function Predict() {
+  const [stock, setStock] = useState(""); // State for the selected stock
+  const [selectedDate, setSelectedDate] = useState(new Date()); // State for the selected date
+  const [numberOfDays, setNumberOfDays] = useState(30); // State for the number of days
+  const [predictionResult, setPredictionResult] = useState(null);
 
-  const token=props.token;
-  
-  const handleStartChange = (e) => {
-    setStartDate(e.target.value);
-  };
-
-  const handleCompanyChange = (e) => {
-    setCompany(e.target.value);
-  };
-
-  const handleEndChange = (e) => {
-    setEndDate(e.target.value);
-  };
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-
-    const data = {
-      startDate:startDate,
-      endDate:endDate,
-      company:company
-    }
-
-    console.log(data)
-
-  // {
-  //   method: "POST",
-  //   headers: {
-  //     "Authorization" : `Bearer ${token}`,
-  //   },
-  //   body: JSON.stringify({
-  //     "hi":"hello"
-  //   }),
-  // }
-    try {
-      const response = await fetch("http://localhost:5000/v1/ml/", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json', // Specify the Content-Type here
-          "Authorization" : `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      });
-
-      console.log(response)
-
-      if (response.ok) {
-        const data = await response.data();
-        alert(data);
-        setResponseText(`Response: ${JSON.stringify(data)}`);
-      } else {
-        setResponseText(`Error: ${response.status} - ${response.statusText}`);
-      }
-    } catch (error) {
-      setResponseText(`Error: ${error.message}`);
-    }
+  const handlePredictClick = () => {
+    // Implement your prediction logic here
+    // You can send the selected stock, date, and number of days to your prediction API or function
+    // Update the predictionResult state with the result
+    // Example:
+    // const result = predictStockPrice(stock, selectedDate, numberOfDays);
+    // setPredictionResult(result);
   };
 
   return (
-    <div className="predy" align="center">
-      {/* SEARCH BUTTON */}
-      <div className="searchsto">
-        <h1 className="title" style={{ color: "white", fontSize: "24px" }}>
-          Predict by Input
-        </h1>
-        <div className="searcher">
-          <input
-            type="search"
-            className="searchbar"
-            placeholder="Search"
-            list="stocks"
-            onChange={handleCompanyChange}
-            style={{ color: "white" }}
-          />
-          <datalist id="stocks">
-            <option value="AAPL-Apple" />
-            <option value="MSFT-Microsoft" />
-            <option value="GOOGL-Google" />
-            <option value="AMZN-Amazon" />
-            <option value="NVDA-Nvidia" />
-          </datalist>
-          <input
-            type="submit"
-            className="search"
-            onClick={handleClick}
-            style={{ backgroundColor: "#3aaf9f", color: "white" }}
-          />
-        </div>
+    <div className="predict-container">
+      <h2>Predict the Future Prices of Stock</h2>
+      <p>by providing the input</p>
+
+      <div className="form-group">
+        <label>Select a Stock:</label>
+        <select
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
+        >
+          <option value="">Select a stock</option>
+          <option value="AAPL">Apple Inc.</option>
+          <option value="GOOGL">Alphabet Inc.</option>
+          {/* Add more stock options here */}
+        </select>
       </div>
 
-      <br />
-      <div className="dates">
-        <div className="date-input">
-          <label style={{ color: "white", fontSize: "18px" }}>Start Date: </label>
-          <input
-            type="date"
-            onChange={handleStartChange}
-            value={startDate}
-            style={{ marginLeft: "10px", width: "150px", fontSize: "18px", height: "35px" }}
-          />
-        </div>
-
-        <div className="date-input" style={{ marginTop: "10px" }}>
-          <label style={{ color: "white", fontSize: "18px" }}>End Date: </label>
-          <input
-            type="date"
-            onChange={handleEndChange}
-            value={endDate}
-            style={{ marginLeft: "16px", width: "150px", fontSize: "18px", height: "35px" }}
-          />
-        </div>
+      <div className="form-group">
+        <label>Select a Date:</label>
+        <input
+          type="date"
+          value={selectedDate.toISOString().split('T')[0]}
+          onChange={(e) => setSelectedDate(new Date(e.target.value))}
+        />
       </div>
+
+      <div className="form-group">
+        <label>Number of Days:</label>
+        <input
+          type="number"
+          value={numberOfDays}
+          onChange={(e) => setNumberOfDays(parseInt(e.target.value, 10))}
+        />
+      </div>
+
+      <button onClick={handlePredictClick}>Predict</button>
+
+      {predictionResult && (
+        <div className="prediction-result">
+          <h3>Prediction Result</h3>
+          {/* Display the prediction result here */}
+        </div>
+      )}
     </div>
   );
 }
+
+export default Predict;

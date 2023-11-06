@@ -2,11 +2,10 @@ import '../stylesheets/home.css';
 import Navbar from "../Mycomps/Navbar";
 import Backg from "../Mycomps/backgr";
 import Seacrhst from "../Mycomps/searchst";
-import Predin  from "../Mycomps/predbyinp";
 import { useState, useEffect } from 'react';
 import Graph from '../Mycomps/graph';
 import Footerc from "../Mycomps/Footer"
-
+import Prediction from "../Mycomps/predbyinp"
 
 export default function Home() {
   const[isSubmitted, setIsSubmitted] = useState(false)
@@ -26,9 +25,9 @@ export default function Home() {
   <Backg/>
   <Seacrhst isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/> 
   <br></br>
-  {isSubmitted && <Graph/>} 
-  <Predin token={token}/>  
+  {isSubmitted && <Graph/>}
   <br></br>
+  <Prediction/>
   <Footerc/>
  
    </>
