@@ -25,30 +25,29 @@ function setProperGraphData(dates, predictions) {
   return dummyPoints;
 }
 
-
 export default function Searchst(props) {
   const [apiData, setApiData] = useState(null);
   const [ticker, setTicker] = useState(null);
   const [graphDataPoints, setGraphDataPoints] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [stockVariables, setStockVariables]= useState(null);
-  const token = (localStorage.getItem('token')).replace(/"/g, "");
+  const [stockVariables, setStockVariables] = useState(null);
+  const token = localStorage.getItem("token").replace(/"/g, "");
   const handleChange = (e) => {
     console.log(e.target.value);
     setTicker(e.target.value);
   };
 
   const handleClear = () => {
-    setIsSubmitted(false)
-  }
+    setIsSubmitted(false);
+  };
 
-  const handleClick = async(e) => {
-    if(!ticker){
+  const handleClick = async (e) => {
+    if (!ticker) {
       setIsSubmitted(false);
-      return
+      return;
     }
-    
+
     setIsSubmitted(true);
 
     const data = {
@@ -56,7 +55,7 @@ export default function Searchst(props) {
     };
 
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch("http://localhost:5000/v1/ml/search", {
         method: "POST",
         headers: {
@@ -75,34 +74,36 @@ export default function Searchst(props) {
         // setGraphData(data.predicted_prices);
         // setDates(data.dates);
         // setProperData(startDate, endDate, data.predicted_prices)
-        setGraphDataPoints(
-          setProperGraphData(data.dates, data.prices)
-        );
-          setLoading(false)
-          console.log(data.stock)
-          setStockVariables(data.stock)
+        setGraphDataPoints(setProperGraphData(data.dates, data.prices));
+        setLoading(false);
+        console.log(data.stock);
+        setStockVariables(data.stock);
         // setResponseText(`Response: ${JSON.stringify(data)}`);
       } else {
-        setLoading(false)
+        setLoading(false);
         // setResponseText(`Error: ${response.status} - ${response.statusText}`);
         console.log(`Error: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       // setResponseText(`Error: ${error.message}`);
       console.log(`Error: ${error.message}`);
     }
-
-
-  }
+  };
 
   return (
-    <div className="predict-container" style={{marginTop:"40px"}}>
+    <div className="predict-container">
+      <h2>Predict the Movement of the Stock</h2>
+      <p>by providing the input</p>
       <div
         className="form-group"
-        style={{ alignSelf: "center", alignContent: "center",width:'60%',marginLeft:'20%' }}
+        style={{
+          "padding-left": "18rem",
+          "padding-right": "18rem",
+          alignItems: "center",
+        }}
       >
-        <label className="Search_Stock1">Select a Stock:</label>
+        <label>Select a Stock:</label>
         <select value={ticker} onChange={handleChange}>
           <option value="">Select a stock</option>
           <option value="AAPL">Apple Inc.</option>
@@ -110,19 +111,13 @@ export default function Searchst(props) {
           <option value="MSFT">Microsoft Inc.</option>
           <option value="AMZN">Amazon Inc.</option>
           <option value="NVDA">Nvidia Inc.</option>
-
-          {/* Add more stock options here */}
         </select>
-
-      {/* <button type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button> */}
-
-      <br></br>
-      <br></br>
-      {isSubmitted ?
-        <div>
+      </div>
+      {isSubmitted ? (
+        <div style={{ justifyContent: "center" }}>
           <button onClick={handleClear}>Clear</button>
           {loading ? (
-            <div>
+            <div className="MakeCenter">
               <CirclesWithBar
                 height="100"
                 width="100"
@@ -134,17 +129,21 @@ export default function Searchst(props) {
                 innerCircleColor=""
                 barColor=""
                 ariaLabel="circles-with-bar-loading"
-                justifyContent="center"
               />
             </div>
           ) : (
-            <Graph graphDataPoints={graphDataPoints} stockVariables={stockVariables}/>
+            <div>
+              <Graph
+                stock={ticker}
+                graphDataPoints={graphDataPoints}
+                stockVariables={stockVariables}
+              />
+            </div>
           )}
         </div>
-      : <button onClick={handleClick}>Search Stock</button>
-    }
-    <br></br>
-        </div>
+      ) : (
+        <button onClick={handleClick}>Predict</button>
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../stylesheets/graph.css";
 import axios from "axios";
 import CanvasJSReact from "@canvasjs/react-stockcharts";
+import Table from 'react-bootstrap/Table'
 var CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 export default function Graph(props) {
@@ -10,7 +11,7 @@ export default function Graph(props) {
   console.log(stock)
   const options = {
     title: {
-      text: "CanvasJS React StockChart",
+      text: `${props.stock} Stock Prices`,
     },
     charts: [
       {
@@ -33,17 +34,17 @@ export default function Graph(props) {
   // console.log(props.stockVariables)
 
   return (
-    <div className="graph">
-      {/* <div className="chart"> */}
+    // <div className="graph">
+      // {/* <div className="chart"> */}
         
-      {/* </div> */}
-      <div style={{ width: "650px" }}>
-          <div>
-            <CanvasJSStockChart options={options} />
-          </div>
-        </div>
-      <div className="valuetable" >
-        < table className ="valuetable-column">
+      // {/* </div> */}
+          // {/* <div>
+        // </div> */}
+        <div style={{"alignContent":"center"}}>
+        <CanvasJSStockChart options={options} />
+        <div style={{"padding-left":"10rem"}}>
+        <Table striped bordered hover variant="dark">
+        {/* < table className ="valuetable-column"> */}
           <thead>
             <tr >
               <th>Financial Parameter</th>
@@ -84,9 +85,11 @@ export default function Graph(props) {
               <td>$ {stock.market_cap} T</td>
             </tr>
           </tbody>
-        </table>
+          </Table>
+        {/* </table> */}
+      </div>
       </div>
       
-    </div>
+    // </div>
   );
 }

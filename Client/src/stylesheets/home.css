@@ -489,3 +489,10 @@ ul li a {
 .logout-button:hover {
   background-color: #c0392b; /* Hover background color for the logout button */
 }
+
+.graph{
+  width: 50vw;
+}
+canvas{
+  width: 80vw;
+}

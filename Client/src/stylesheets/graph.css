@@ -3,26 +3,29 @@
     background-color: black;
     margin-bottom:0px;
     margin-right: 80px;
+    /* width: 80vw; */
 }
 .graph{
     margin-top: 0px;
     display: flex;
     flex-direction: row;
     align-content: space-around;
+    /* width: 40vw; */
     /* background-color: black; */
 }
 .chart{
-
+    /* width: 80vw; */
     display :grid;
     grid-template-columns: auto auto;
     margin-bottom: 35px;
-    margin-left: -205px;
+    margin-left: -505px;
     margin-right: 80px;
     padding-right: 50px;
     
 }
 
 .valuetable{
+    /* width: 80vw; */
     margin-left: 20px;
     border-collapse: collapse;
     border-spacing: 5px;
@@ -30,7 +33,7 @@
     text-align: center;
     font-weight: bold;
     /* box-shadow: 100px 100px 100px rgba(13, 62, 141, 0.1); */
-    width: 300px;
+    width: 200px;
     margin-right: 100px;
     
     
@@ -39,8 +42,10 @@
     background-color: #a01616;
   }
 .valuetable-column{
-    width: 350px;
-    
+    width: 400px;
+canvas{
+    width: 40vw;
+}
 
 }
 /* .valuetable:hover {

@@ -226,6 +226,7 @@ export default function PredByInput(props) {
                 </div>
               </div>
               <Graph
+                stock={company}
                 graphDataPoints={graphDataPoints}
                 stockVariables={stockVariables}
               />
