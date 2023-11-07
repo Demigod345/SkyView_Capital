@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import time
 import engine
+import stockdata
 
 
 class predictions:
