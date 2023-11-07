@@ -43,8 +43,17 @@ def stock_variables(company):
     low_prev = float(past_price['Low'][-1:]) # Prev day Low
     market_cap = ((float(ticker.get_shares_full(start="2022-01-01", end=None)[-1:]) * prev_close)/1000000000000) # Market Cap #T
 
+    high = float("{:.2f}".format(high))
+    low = float("{:.2f}".format(low))
+    prev_close = float("{:.2f}".format(prev_close))
+    returns = float("{:.2f}".format(returns))
+    avg_volume = float("{:.2f}".format(avg_volume))
+    high_prev = float("{:.2f}".format(high_prev))
+    low_prev = float("{:.2f}".format(low_prev))
+    market_cap = float("{:.2f}".format(market_cap))
+
     variable_object={
-        "high " :high ,
+        "high" :high ,
         "low" :low ,
         "prev_close" :prev_close ,
         "returns" :returns ,

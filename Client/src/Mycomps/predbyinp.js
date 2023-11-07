@@ -35,12 +35,29 @@ function setProperGraphData(dates, predictions) {
       x: new Date(date),
       y: prediction,
     };
-    console.log(dummyPoint);
+    // console.log(dummyPoint);
     dummyPoints.push(dummyPoint);
   }
   // console.log(a)
-  console.log(dummyPoints);
+  // console.log(dummyPoints);
   return dummyPoints;
+}
+
+function FutureList({ futureArray }) {
+  console.log("yaha");
+  console.log(typeof futureArray);
+  console.log(futureArray);
+  return (
+    <div>
+      <ul>
+        {futureArray.map((object) => {
+          <li>{object.x}</li>;
+          // <li>{object.y}</li>
+          // </>;
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default function PredByInput(props) {
@@ -55,6 +72,9 @@ export default function PredByInput(props) {
   const [dates, setDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [stockVariables, setStockVariables] = useState(null);
+  const [splicedArray, setSplicedArray] = useState([]);
+
   let token = localStorage.getItem("token");
   token = token.replace(/"/g, ""); // This will remove all double quotes in the string
 
@@ -67,8 +87,8 @@ export default function PredByInput(props) {
   };
 
   const handleClear = () => {
-    setIsSubmitted(false)
-  }
+    setIsSubmitted(false);
+  };
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -77,9 +97,10 @@ export default function PredByInput(props) {
       startDate: startDate,
       endDate: "2023-11-07",
       company: company,
+      days: numberOfDays,
     };
 
-    setIsSubmitted(true)
+    setIsSubmitted(true);
 
     try {
       setLoading(true);
@@ -95,14 +116,20 @@ export default function PredByInput(props) {
       if (response.ok) {
         const data = await response.json();
         setPredictions(data);
-        console.log(data);
+        // console.log(data);
         setAdvice(data.advice);
         setSentiment(data.predicted_sentiment);
         setGraphData(data.predicted_prices);
         setDates(data.dates);
         // setProperData(startDate, endDate, data.predicted_prices)
+        setStockVariables(data.stock);
         setGraphDataPoints(
           setProperGraphData(data.dates, data.predicted_prices)
+        );
+        setSplicedArray(
+          setProperGraphData(data.dates, data.predicted_prices).slice(
+            -numberOfDays
+          )
         );
 
         setLoading(false);
@@ -161,7 +188,7 @@ export default function PredByInput(props) {
         </div>
       </div>
       {isSubmitted ?
-        <div style={{justifyContent:"center"}}>
+      <div style={{justifyContent:"center"}}>
           <button onClick={handleClear}>Clear</button>
           {loading ? (
             <div className="MakeCenter">
@@ -179,78 +206,35 @@ export default function PredByInput(props) {
               />
             </div>
           ) : (
-            <Graph graphDataPoints={graphDataPoints} />
+            <div>
+              <div className="predictedData">
+                <div className="analysedData">
+                  <p style={{ padding: "1vw" }}>advice: {advice}</p>
+                  <p style={{ padding: "1vw" }}>sentiments: {sentiment}</p>
+                </div>
+                {/* <FutureList futureArray={splicedArray}/> */}
+                <div className="predictedDaysData">
+                  <div>
+                    <ul>
+                      {splicedArray.map((object) => (
+                        <li key={object.id}>{object.x.toDateString()}: $ {object.y.toFixed(2)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <h2>data of required number of days:</h2>
+                  <p>dd:mm:yyyy - </p>
+                </div>
+              </div>
+              <Graph
+                graphDataPoints={graphDataPoints}
+                stockVariables={stockVariables}
+              />
+            </div>
           )}
         </div>
-      : <button onClick={handleClick}>Predict</button>
-    }
+       : (
+        <button onClick={handleClick}>Predict</button>
+      )}
     </div>
-    // <div className="predy" align="center">
-    //   {/* SEARCH BUTTON */}
-    //   <div className="searchsto">
-    //     <h1 className="title" style={{ color: "white", fontSize: "24px" }}>
-    //       Predict by Input
-    //     </h1>
-    //     <div className="searcher">
-    //       <input
-    //         type="search"
-    //         className="searchbar"
-    //         placeholder="Search"
-    //         list="stocks"
-    //         onChange={handleCompanyChange}
-    //         style={{ color: "white" }}
-    //       />
-    //       <datalist id="stocks">
-    //         <option value="AAPL-Apple" />
-    //         <option value="MSFT-Microsoft" />
-    //         <option value="GOOGL-Google" />
-    //         <option value="AMZN-Amazon" />
-    //         <option value="NVDA-Nvidia" />
-    //       </datalist>
-    //       <input
-    //         type="submit"
-    //         className="search"
-    //         onClick={handleClick}
-    //         style={{ backgroundColor: "#3aaf9f", color: "white" }}
-    //       />
-    //     </div>
-    //   </div>
-
-    //   <br />
-    //   <div className="dates">
-    //     <div className="date-input">
-    //       <label style={{ color: "white", fontSize: "18px" }}>
-    //         Start Date:{" "}
-    //       </label>
-    //       <input
-    //         type="date"
-    //         onChange={handleStartChange}
-    //         value={startDate}
-    //         style={{
-    //           marginLeft: "10px",
-    //           width: "150px",
-    //           fontSize: "18px",
-    //           height: "35px",
-    //         }}
-    //       />
-    //     </div>
-
-    //     <div className="date-input" style={{ marginTop: "10px" }}>
-    //       <label style={{ color: "white", fontSize: "18px" }}>End Date: </label>
-    //       <input
-    //         type="date"
-    //         onChange={handleEndChange}
-    //         value={endDate}
-    //         style={{
-    //           marginLeft: "16px",
-    //           width: "150px",
-    //           fontSize: "18px",
-    //           height: "35px",
-    //         }}
-    //       />
-    //     </div>
-    //   </div>
-    //   <Graph graphDataPoints={graphDataPoints} />
-    // </div>
   );
 }

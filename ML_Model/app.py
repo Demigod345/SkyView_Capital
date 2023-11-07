@@ -29,11 +29,12 @@ def predict():
         company=request.get_json()['company']
         startDate=request.get_json()['startDate']
         endDate=request.get_json()['endDate']
+        days=request.get_json()['days']
         # duration=request.get_json()['duration']
         #Date- YYYY-MM-DD
         #yaha par processing kar and data bhej
         ticker=company.split('-')[0]
-        prediction_days = 3
+        prediction_days = days
         batch_size = 7
         print("startDate", startDate)
         print("endDate", endDate)

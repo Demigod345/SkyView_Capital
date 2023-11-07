@@ -80,3 +80,18 @@
   .Predict-button{
     width: 5000px;
   }
+
+  .predictedData{
+    text-align: left;
+     border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    /* border: ; */
+  }
+
+  .analysedData{
+
+   
+    margin-top: 6vw;
+    margin-left: 3vw;
+    width:50vw;
+  }

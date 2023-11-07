@@ -52,6 +52,7 @@ const getUserInput = catchAsync(async (req, res) => {
       company: data.company,
       endDate: data.endDate,
       startDate: data.startDate,
+      days: data.days 
     },
     headers: {
       Token: `${process.env.SERVER_SECRET}`, // You can add more headers as needed

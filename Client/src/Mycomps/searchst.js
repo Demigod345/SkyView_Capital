@@ -32,7 +32,7 @@ export default function Searchst(props) {
   const [graphDataPoints, setGraphDataPoints] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const [stockVariables, setStockVariables]= useState(null);
   const token = (localStorage.getItem('token')).replace(/"/g, "");
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -79,6 +79,8 @@ export default function Searchst(props) {
           setProperGraphData(data.dates, data.prices)
         );
           setLoading(false)
+          console.log(data.stock)
+          setStockVariables(data.stock)
         // setResponseText(`Response: ${JSON.stringify(data)}`);
       } else {
         setLoading(false)
@@ -95,29 +97,6 @@ export default function Searchst(props) {
   }
 
   return (
-    // <div className="searchsto" align="center">
-    //   <h1 className="title">Search Stocks</h1>
-    //   <div className="searcher">
-    //     <select
-    //       type="search"
-    //       className="searchbar"
-    //       placeholder="Search"
-    //       aria-label="Search"
-    //       aria-describedby="search-addon"
-    //       list="stocks"
-    //       onChange={handleChange}
-    //     >
-    //       <option>AAPL</option>
-    //       <option>MSFT</option>
-    //       <option>GOOGL</option>
-    //       <option>AMZN</option>
-    //       <option>NVDA</option>
-    //     </select>
-    //     <button type="submit" className="search" onClick={handleClick}>
-    //       <img src={search} className="searchicon" alt="" style={{ width: '20px', height: '20px' }} />
-    //     </button>
-    //   </div>
-    // </div>
     <div className="predict-container" style={{marginTop:"40px"}}>
       <div
         className="form-group"
@@ -137,6 +116,7 @@ export default function Searchst(props) {
 
       {/* <button type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button> */}
 
+      <br></br>
       <br></br>
       {isSubmitted ?
         <div>
@@ -158,11 +138,12 @@ export default function Searchst(props) {
               />
             </div>
           ) : (
-            <Graph graphDataPoints={graphDataPoints} />
+            <Graph graphDataPoints={graphDataPoints} stockVariables={stockVariables}/>
           )}
         </div>
       : <button onClick={handleClick}>Search Stock</button>
     }
+    <br></br>
         </div>
     </div>
   );
