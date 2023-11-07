@@ -11,7 +11,7 @@ function Footer() {
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" >
               
             
-            <div style={{width:'10px'}}><h4 className="text-uppercase mb-4 font-weight-bold" >SkyView Capital  </h4></div>
+            <div ><h4 className="mb-4 font-weight-bold" ><img src={image} style={{width:'60px',display:'inline'}}></img> KYVIEW CAPITAL</h4></div>
             
               <p>
               Empower your financial decisions with our Stock Predictor App's 

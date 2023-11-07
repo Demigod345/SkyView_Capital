@@ -2,15 +2,30 @@ import React, { Component } from "react";
 import logo from "./images/skyviewlogobg.png";
 
 class Navbar extends Component {
-  state = {
-    isProfileOpen: false,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isProfileOpen: false,
+    };
+
+    this.dropdownRef = React.createRef();
+  }
+
+  handleMouseEnter = () => {
+    this.setState({ isProfileOpen: true });
   };
 
-  toggleProfileDropdown = () => {
-    this.setState({ isProfileOpen: !this.state.isProfileOpen });
+  handleMouseLeave = () => {
+    this.setState({ isProfileOpen: true }); // Keep the dropdown open after mouse leaves
+    setTimeout(() => {
+      this.setState({ isProfileOpen: false }); // Close the dropdown after a delay
+    }, 1000); // Adjust the delay time (in milliseconds) as needed
   };
+
 
   render() {
+    const { isOpen } = this.state;
     const user = {
       name: "John Doe",
       email: "johndoe@example.com",
@@ -36,8 +51,8 @@ class Navbar extends Component {
 
           <div
             className="profile-dropdown"
-            onMouseEnter={this.toggleProfileDropdown}
-            onMouseLeave={this.toggleProfileDropdown}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
           >
             <a 
               className="navbur"

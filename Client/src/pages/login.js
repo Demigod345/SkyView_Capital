@@ -2,28 +2,62 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import PasswordChecklist from "react-password-checklist";
 import "../stylesheets/login.css";
 
 function Login() {
   let navigate = useNavigate();
   const [responseText, setResponseText] = useState("");
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [token,setToken] =useState("")
+  const [token,setToken] =useState("");
+  //new checker
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handleSignUp2Click = () => {
+    setPassword(''); // Set the password variable to an empty string
   };
+  const handleSignIn2Click = () => {
+    setPassword(''); // Set the password variable to an empty string
+  };
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+  };
+  
+  useEffect(() => {
+    const checklist = password;
+    const length = checklist.length;
+    let hasValidLength = checklist.length >= 8;
+    let hasAlphabet=/[a-zA-Z]/.test(checklist);
+    let hasNumber=/\d/.test(checklist);
+    if (hasValidLength && hasAlphabet && hasNumber){
+      console.log("YEAH")
+      setIsPasswordValid(true);
+    }
+  }, [password]);
+  
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
   const handleSignUpClick = async (e) => {
     e.preventDefault();
+
+    if (!isPasswordValid) {
+      // Display an alert if the password is not valid
+      Swal.fire({
+        title: "Error",
+        text: "Password does not meet the requirements",
+        icon: "error",
+      });
+      return; // Exit the function
+    }
 
     if (!email || !password || !name) {
       // Display an alert if any of the required fields are empty
@@ -34,6 +68,7 @@ function Login() {
       });
       return; // Exit the function
     }
+
 
     const data = {
       email: email,
@@ -76,6 +111,16 @@ function Login() {
   const handleSignInClick = async (e) => {
     e.preventDefault();
 
+    if (!isPasswordValid) {
+      // Display an alert if the password is not valid
+      Swal.fire({
+        title: "Error",
+        text: "Password does not meet the requirements",
+        icon: "error",
+      });
+      return; // Exit the function
+    }
+
     if (!email || !password) {
       // Display an alert if any of the required fields are empty
       Swal.fire({
@@ -86,6 +131,7 @@ function Login() {
       return; // Exit the function
     }
     
+
     const data = {
       email: email,
       password: password,
@@ -133,7 +179,7 @@ function Login() {
           
           <a className="button sign-up" href="#cover" style={{
             'width':'auto',
-          }}>
+          }} onClick={handleSignUp2Click} >
             Sign Up
           </a>
           <h1 className="sign-in">Hello, Friend! </h1>
@@ -142,7 +188,7 @@ function Login() {
           <br></br>
           <a className="button sign-in" style={{
             "width":"auto",
-          }} href="#">
+          }} href="#" onClick={handleSignIn2Click}>
             Sign In
           </a>
   
@@ -164,6 +210,13 @@ function Login() {
               placeholder="Password"
               onChange={handlePasswordChange}
             />
+            {password !== "" && ( // Conditionally render the checklist
+        <PasswordChecklist
+          rules={["capital", "minLength", "number"]}
+          minLength={8}
+          value={password}
+        />
+      )}
             <br></br>
             <a id="forgot-pass" href="#">
               Forgot your password?
@@ -196,6 +249,13 @@ function Login() {
               onChange={handlePasswordChange}
               autocomplete="off"
             />
+            {password !== "" && ( // Conditionally render the checklist
+        <PasswordChecklist
+          rules={["capital", "minLength", "number"]}
+          minLength={8}
+          value={password}
+        />
+      )}
             <br></br>
             <input className="submit-btn" type="submit" value="Sign Up" />
           </form>
