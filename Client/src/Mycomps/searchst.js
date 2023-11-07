@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import search from "./images/Sectionim1.svg";
 import Graph from "./graph";
 import "../stylesheets/graph.css";
+import { CirclesWithBar } from "react-loader-spinner";
 
 function setProperGraphData(dates, predictions) {
   let dummyPoints = [];
@@ -30,18 +31,17 @@ export default function Searchst(props) {
   const [ticker, setTicker] = useState(null);
   const [graphDataPoints, setGraphDataPoints] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const token = (localStorage.getItem('token')).replace(/"/g, "");
   const handleChange = (e) => {
     console.log(e.target.value);
-    // if (e.target.value) {
-    //   setIsSubmitted(true);
-    // } else {
-    //   setIsSubmitted(false);
-    // }
-
     setTicker(e.target.value);
   };
+
+  const handleClear = () => {
+    setIsSubmitted(false)
+  }
 
   const handleClick = async(e) => {
     if(!ticker){
@@ -56,6 +56,7 @@ export default function Searchst(props) {
     };
 
     try {
+      setLoading(true)
       const response = await fetch("http://localhost:5000/v1/ml/search", {
         method: "POST",
         headers: {
@@ -77,13 +78,15 @@ export default function Searchst(props) {
         setGraphDataPoints(
           setProperGraphData(data.dates, data.prices)
         );
-
+          setLoading(false)
         // setResponseText(`Response: ${JSON.stringify(data)}`);
       } else {
+        setLoading(false)
         // setResponseText(`Error: ${response.status} - ${response.statusText}`);
         console.log(`Error: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
+      setLoading(false)
       // setResponseText(`Error: ${error.message}`);
       console.log(`Error: ${error.message}`);
     }
@@ -132,12 +135,33 @@ export default function Searchst(props) {
           {/* Add more stock options here */}
         </select>
 
-      <button className="Search_Stock" type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button>
+      {/* <button type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button> */}
 
       <br></br>
-      {isSubmitted && (
-        <Graph ticker={ticker} graphDataPoints={graphDataPoints} />
-        )}
+      {isSubmitted ?
+        <div>
+          <button onClick={handleClear}>Clear</button>
+          {loading ? (
+            <div>
+              <CirclesWithBar
+                height="100"
+                width="100"
+                color="#4fa94d"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                outerCircleColor=""
+                innerCircleColor=""
+                barColor=""
+                ariaLabel="circles-with-bar-loading"
+              />
+            </div>
+          ) : (
+            <Graph graphDataPoints={graphDataPoints} />
+          )}
+        </div>
+      : <button onClick={handleClick}>Search Stock</button>
+    }
         </div>
     </div>
   );

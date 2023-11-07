@@ -8,6 +8,7 @@ from keras.layers import LSTM
 from keras.layers import Dense
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
+import stockdata
 
 
 class predictions:
@@ -127,11 +128,14 @@ def main(startdate, enddate, batch_size, prediction_days, company):
     advice = technical_analysis(startdate, enddate, company)
     predicted_prices_list=predicted_prices.tolist()
     dates_list=dates.tolist()
+    stock_variable_obj=stockdata.stock_variables(company)
+
     return_obj = {
             "predicted_prices": predicted_prices_list,
             "dates":dates_list, 
             "predicted_sentiment": predicted_sentiment, 
-            "advice": advice
+            "advice": advice,
+            "stock":stock_variable_obj
         }
     
     return return_obj

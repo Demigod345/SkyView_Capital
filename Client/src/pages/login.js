@@ -1,18 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import PasswordChecklist from "react-password-checklist";
 import "../stylesheets/login.css";
 
 function Login() {
   let navigate = useNavigate();
   const [responseText, setResponseText] = useState("");
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [token,setToken] =useState("");
+  const [token, setToken] = useState("");
+  const [verifiedEmail, setVerifiedEmail]=useState('')
+  const [verifiedName, setVerifiedName]=useState('')
   //new checker
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
@@ -20,28 +21,26 @@ function Login() {
     setEmail(e.target.value);
   };
   const handleSignUp2Click = () => {
-    setPassword(''); // Set the password variable to an empty string
+    setPassword(""); // Set the password variable to an empty string
   };
   const handleSignIn2Click = () => {
-    setPassword(''); // Set the password variable to an empty string
+    setPassword(""); // Set the password variable to an empty string
   };
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
   };
-  
+
   useEffect(() => {
     const checklist = password;
-    const length = checklist.length;
     let hasValidLength = checklist.length >= 8;
-    let hasAlphabet=/[a-zA-Z]/.test(checklist);
-    let hasNumber=/\d/.test(checklist);
-    if (hasValidLength && hasAlphabet && hasNumber){
-      console.log("YEAH")
+    let hasAlphabet = /[a-zA-Z]/.test(checklist);
+    let hasNumber = /\d/.test(checklist);
+    if (hasValidLength && hasAlphabet && hasNumber) {
       setIsPasswordValid(true);
     }
   }, [password]);
-  
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -69,7 +68,6 @@ function Login() {
       return; // Exit the function
     }
 
-
     const data = {
       email: email,
       name: name,
@@ -84,12 +82,10 @@ function Login() {
         },
         body: JSON.stringify(data),
       });
-      
+
       if (response.ok) {
         const data = await response.json();
-        console.log(data.tokens.access.token);
-        
-        navigate("home");
+        navigate("/");
       } else {
         setResponseText(`Error: ${response.status} - ${response.statusText}`);
       }
@@ -102,12 +98,16 @@ function Login() {
       icon: "success",
     });
   };
-  
+
   useEffect(() => {
-    localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem("token", JSON.stringify(token));
+    if (token.length > 3) {
+      localStorage.setItem("name", JSON.stringify(verifiedName));
+      localStorage.setItem("email", JSON.stringify(verifiedEmail));
+    }
     // navigate("home");
   }, [token]);
-  
+
   const handleSignInClick = async (e) => {
     e.preventDefault();
 
@@ -130,7 +130,6 @@ function Login() {
       });
       return; // Exit the function
     }
-    
 
     const data = {
       email: email,
@@ -149,9 +148,12 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         setToken(data.tokens.access.token);
-        
+        setVerifiedName(data.user.name)
+        setVerifiedEmail(data.user.email)
+        console.log(data)
+
         setTimeout(() => {
-          navigate("home")
+          navigate("home");
         }, 1000);
       } else {
         setResponseText(`Error: ${response.status} - ${response.statusText}`);
@@ -173,29 +175,40 @@ function Login() {
         <div id="cover">
           <h1 className="sign-up">Welcome Back!</h1>
           <p className="sign-up">
-          To keep connected with us please<br></br>signin with your personal details.
+            To keep connected with us please<br></br>signin with your personal
+            details.
           </p>
           <br></br>
-          
-          <a className="button sign-up" href="#cover" style={{
-            'width':'auto',
-          }} onClick={handleSignUp2Click} >
+
+          <a
+            className="button sign-up"
+            href="#cover"
+            style={{
+              width: "auto",
+            }}
+            onClick={handleSignUp2Click}
+          >
             Sign Up
           </a>
           <h1 className="sign-in">Hello, Friend! </h1>
-          <p className="sign-in">Enter your personal details<br></br> and start a journey with us.
+          <p className="sign-in">
+            Enter your personal details<br></br> and start a journey with us.
           </p>
           <br></br>
-          <a className="button sign-in" style={{
-            "width":"auto",
-          }} href="#" onClick={handleSignIn2Click}>
+          <a
+            className="button sign-in"
+            style={{
+              width: "auto",
+            }}
+            href="#"
+            onClick={handleSignIn2Click}
+          >
             Sign In
           </a>
-  
         </div>
         <div id="login">
           <h1>Sign In</h1>
-          
+
           <form onSubmit={handleSignInClick}>
             <input
               type="email"
@@ -211,12 +224,12 @@ function Login() {
               onChange={handlePasswordChange}
             />
             {password !== "" && ( // Conditionally render the checklist
-        <PasswordChecklist
-          rules={["capital", "minLength", "number"]}
-          minLength={8}
-          value={password}
-        />
-      )}
+              <PasswordChecklist
+                rules={["letter","minLength", "number"]}
+                minLength={8}
+                value={password}
+              />
+            )}
             <br></br>
             <a id="forgot-pass" href="#">
               Forgot your password?
@@ -250,12 +263,12 @@ function Login() {
               autocomplete="off"
             />
             {password !== "" && ( // Conditionally render the checklist
-        <PasswordChecklist
-          rules={["capital", "minLength", "number"]}
-          minLength={8}
-          value={password}
-        />
-      )}
+              <PasswordChecklist
+                rules={[ "minLength", "number"]}
+                minLength={8}
+                value={password}
+              />
+            )}
             <br></br>
             <input className="submit-btn" type="submit" value="Sign Up" />
           </form>
