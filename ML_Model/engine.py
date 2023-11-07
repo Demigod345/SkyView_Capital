@@ -17,7 +17,6 @@ class predictions:
         self.predicted_sentiment = predicted_sentiment
         self.advise = advise
 
-
 def build_dataset(sequence, n_steps):
   X, y = list(), list()
   for i in range(len(sequence)):
@@ -125,7 +124,14 @@ def main(startdate, enddate, batch_size, prediction_days, company):
 
     predicted_prices, dates = predict_price(startdate, enddate, batch_size, prediction_days,company)
     predicted_sentiment = predict_sentiment()
-    advise = technical_analysis(startdate, enddate, company)
-
-    return_obj = predictions(predicted_prices, dates, predicted_sentiment, advise)
+    advice = technical_analysis(startdate, enddate, company)
+    predicted_prices_list=predicted_prices.tolist()
+    dates_list=dates.tolist()
+    return_obj = {
+            "predicted_prices": predicted_prices_list,
+            "dates":dates_list, 
+            "predicted_sentiment": predicted_sentiment, 
+            "advice": advice
+        }
+    
     return return_obj

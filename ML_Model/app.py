@@ -1,4 +1,4 @@
-from flask import Flask, request 
+from flask import Flask, request, jsonify
 import os
 from dotenv import load_dotenv
 import time
@@ -28,8 +28,6 @@ def yo():
 @app.route("/model", methods=["POST"])
 def predict(): 
     secretKey=request.headers.get('Token')
-    print(secretKey)
-    print(os.getenv('SERVER_SECRET'))
     if(secretKey!=os.getenv('SERVER_SECRET')):
         print("NOT VERIFIED")
         return "invalid request"
@@ -41,11 +39,15 @@ def predict():
         startDate=request.get_json()['startDate']
         endDate=request.get_json()['endDate']
         # duration=request.get_json()['duration']
-        time.sleep(500)
+        #Date- YYYY-MM-DD
         #yaha par processing kar and data bhej
+        ticker=company.split('-')[0]
         prediction_days = 3
         batch_size = 7
-        return_obj = engine.main(startDate, endDate, batch_size, prediction_days, company)
-        return "successful"
+        print("startDate", startDate)
+        print("endDate", endDate)
+        return_obj = engine.main(str(startDate), str(endDate), batch_size, prediction_days, str(ticker))
+        print(return_obj)
+        return jsonify(return_obj)
 if __name__ == "__main__":        
     app.run(debug=True, port=6969)                     

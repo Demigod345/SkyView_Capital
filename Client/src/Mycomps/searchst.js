@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import search from './images/Sectionim1.svg';
+import Graph from './graph';
 
 export default function Searchst(props) {
   const [stock, setStock] = useState("");
+  const [apiData, setApiData] = useState(null);
+  const [ticker, setTicker] = useState(null);
+  const [graphDataPoints, setGraphDataPoints] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const handleClick = (e) => {
-    props.setIsSubmitted(!props.isSubmitted);
+    setIsSubmitted(!isSubmitted);
   }
 
   const handleChange = (e) => {
     console.log(e.target.value);
+    setTicker(e.target.value);
   }
 
   return (
@@ -48,6 +55,8 @@ export default function Searchst(props) {
           {/* Add more stock options here */}
         </select>
       </div>
-      </div>
+      <br></br>
+      {isSubmitted && <Graph ticker={ticker} graphDataPoints={graphDataPoints}/>}
+    </div>
   );
 }
