@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 import im from './images/image.svg';
-import im1 from "./images/Sectionim1.svg";
-import im2 from "./images/Sectionim2.svg";
-import im3 from "./images/Sectionim3.svg";
-import im4 from "./images/Sectionim4.svg";
-export default function bg() {
+import im1 from "./images/bgtl.svg";
+import im2 from "./images/bgtr.svg";
+import im3 from "./images/bgbl.svg";
+import im4 from "./images/bgbr.svg";
+
+export default function HomePage() {
   return (
     <div className="bgmain">
-    <div style={{
-      width:'100%',
-      height:'100%',
-      
-
-    }}>
-    <img  src={im}  alt=""/>
-   
-    <img  src={im1}  className="img1" alt=""/>
-    <img  src={im2}  className="img1" alt=""/>
-    <img  src={im3}  className="img1" alt=""/>
-    <img  src={im4}  className="img1" alt=""/>
-    </div>
-  </div>
-  )
+      <div className="image-row">
+        <img src={im} className="full-width-image" alt="" />
+      </div>
+      <div className="image-row">
+        <img src={im1} className="img1" alt="" />
+        <img src={im2} className="img2" alt="" />
+      </div>
+      <div className="image-row"></div>
+        <img src={im3} className="img3" alt="" />
+        <img src={im4} className="img4" alt="" />
+      <div/>
+      </div>
+    
+  );
 }
