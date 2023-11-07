@@ -129,6 +129,3 @@ def main(startdate, enddate, batch_size, prediction_days, company):
 
     return_obj = predictions(predicted_prices, dates, predicted_sentiment, advise)
     return return_obj
-
-x, y = predict_price('2020-1-1', '2023-11-6', 7, 3, 'AMZN')
-print(y)
