@@ -9,14 +9,11 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageUsers'),mlController.getUserInput)
-  .put(auth('manageUsers'),mlController.getUserInput)
+  .post(auth(),mlController.getUserInput)
   // .post(auth('manageUsers'), validate(mlValidation.getUserInput), mlController.getPrediction)
 
 router
-  .route('/:userId')
-  .get(auth('getUsers'), validate(userValidation.getUser), userController.getUser)
-  .patch(auth('manageUsers'), validate(userValidation.updateUser), userController.updateUser)
-  .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
+  .route('/search')
+  .post(auth(),mlController.getSearch)
 
 module.exports = router;

@@ -116,74 +116,137 @@ export default function PredByInput(props) {
       console.log(`Error: ${error.message}`);
     }
   };
+  const handleIncreaseDays = () => {
+    if (numberOfDays < 7) {
+      setNumberOfDays(numberOfDays + 1);
+    }
+  };
 
+  const handleDecreaseDays = () => {
+    if (numberOfDays > 1) {
+      setNumberOfDays(numberOfDays - 1);
+    }
+  };
+  
   return (
-    <div className="predy" align="center">
-      {/* SEARCH BUTTON */}
-      <div className="searchsto">
-        <h1 className="title" style={{ color: "white", fontSize: "24px" }}>
-          Predict by Input
-        </h1>
-        <div className="searcher">
-          <input
-            type="search"
-            className="searchbar"
-            placeholder="Search"
-            list="stocks"
-            onChange={handleCompanyChange}
-            style={{ color: "white" }}
-          />
-          <datalist id="stocks">
-            <option value="AAPL-Apple" />
-            <option value="MSFT-Microsoft" />
-            <option value="GOOGL-Google" />
-            <option value="AMZN-Amazon" />
-            <option value="NVDA-Nvidia" />
-          </datalist>
-          <input
-            type="submit"
-            className="search"
-            onClick={handleClick}
-            style={{ backgroundColor: "#3aaf9f", color: "white" }}
-          />
-        </div>
+    <div className="predict-container">
+      <h2>Predict the Movement of the Stock</h2>
+      <p>by providing the input</p>
+      <div className="makeGrid">
+      <div className="form-group">
+        <label>Select a Stock:</label>
+        <select
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
+        >
+          <option value="">Select a stock</option>
+          <option value="AAPL">Apple Inc.</option>
+          <option value="GOOGL">Alphabet Inc.</option>
+          {/* Add more stock options here */}
+        </select>
       </div>
 
-      <br />
-      <div className="dates">
-        <div className="date-input">
-          <label style={{ color: "white", fontSize: "18px" }}>
-            Start Date:{" "}
-          </label>
-          <input
-            type="date"
-            onChange={handleStartChange}
-            value={startDate}
-            style={{
-              marginLeft: "10px",
-              width: "150px",
-              fontSize: "18px",
-              height: "35px",
-            }}
-          />
+      <div className="form-group">
+        <label>Select a Date:</label>
+        <input
+          type="date"
+          value={selectedDate.toISOString().split('T')[0]}
+          onChange={(e) => setSelectedDate(new Date(e.target.value))}
+        />
+      </div>
+      </div>
+      <div className="flex items-center">
+        <div className="w-full h-2 bg-gray-800 rounded-full">
+          
         </div>
-
-        <div className="date-input" style={{ marginTop: "10px" }}>
-          <label style={{ color: "white", fontSize: "18px" }}>End Date: </label>
-          <input
-            type="date"
-            onChange={handleEndChange}
-            value={endDate}
-            style={{
-              marginLeft: "16px",
-              width: "150px",
-              fontSize: "18px",
-              height: "35px",
-            }}
-          />
+        <div className="form-group">
+        <label>Number of Days:</label>
+        <div className="number-input">
+          <button onClick={handleDecreaseDays}>-</button>
+          <input type="number" value={numberOfDays} readOnly />
+          <button onClick={handleIncreaseDays}>+</button>
         </div>
       </div>
-      <Graph graphDataPoints={graphDataPoints} />
+      </div>
+
+      <button 
+      // onClick={handlePredictClick}
+      >Predict</button>
+
+      {predictionResult && (
+        <div className="prediction-result">
+          <h3>Prediction Result</h3>
+          
+          {/* Display the prediction result here */}
+        </div>
+      )}
     </div>
+    // <div className="predy" align="center">
+    //   {/* SEARCH BUTTON */}
+    //   <div className="searchsto">
+    //     <h1 className="title" style={{ color: "white", fontSize: "24px" }}>
+    //       Predict by Input
+    //     </h1>
+    //     <div className="searcher">
+    //       <input
+    //         type="search"
+    //         className="searchbar"
+    //         placeholder="Search"
+    //         list="stocks"
+    //         onChange={handleCompanyChange}
+    //         style={{ color: "white" }}
+    //       />
+    //       <datalist id="stocks">
+    //         <option value="AAPL-Apple" />
+    //         <option value="MSFT-Microsoft" />
+    //         <option value="GOOGL-Google" />
+    //         <option value="AMZN-Amazon" />
+    //         <option value="NVDA-Nvidia" />
+    //       </datalist>
+    //       <input
+    //         type="submit"
+    //         className="search"
+    //         onClick={handleClick}
+    //         style={{ backgroundColor: "#3aaf9f", color: "white" }}
+    //       />
+    //     </div>
+    //   </div>
+
+    //   <br />
+    //   <div className="dates">
+    //     <div className="date-input">
+    //       <label style={{ color: "white", fontSize: "18px" }}>
+    //         Start Date:{" "}
+    //       </label>
+    //       <input
+    //         type="date"
+    //         onChange={handleStartChange}
+    //         value={startDate}
+    //         style={{
+    //           marginLeft: "10px",
+    //           width: "150px",
+    //           fontSize: "18px",
+    //           height: "35px",
+    //         }}
+    //       />
+    //     </div>
+
+    //     <div className="date-input" style={{ marginTop: "10px" }}>
+    //       <label style={{ color: "white", fontSize: "18px" }}>End Date: </label>
+    //       <input
+    //         type="date"
+    //         onChange={handleEndChange}
+    //         value={endDate}
+    //         style={{
+    //           marginLeft: "16px",
+    //           width: "150px",
+    //           fontSize: "18px",
+    //           height: "35px",
+    //         }}
+    //       />
+    //     </div>
+    //   </div>
+    //   <Graph graphDataPoints={graphDataPoints} />
+    // </div>
   );
 }
