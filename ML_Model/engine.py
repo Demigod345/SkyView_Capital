@@ -11,8 +11,9 @@ import torch
 
 
 class predictions:
-    def __init__(self, predicted_prices, predicted_sentiment, advise):
+    def __init__(self, predicted_prices, dates, predicted_sentiment, advise):
         self.predicted_prices = predicted_prices
+        self.dates = dates
         self.predicted_sentiment = predicted_sentiment
         self.advise = advise
 
@@ -67,12 +68,14 @@ def predict_price(startdate, enddate, batch_size, prediction_days, company):
         predictions.append(yhat)
     
     predictions = np.array(predictions)
+    dates = df.index
     df = df['Close']
     prev_price = df.values.astype(float)
     predictions = predictions.reshape(predictions.shape[0])
     predictions = np.concatenate((prev_price, predictions))
-    
-    return predictions;
+    dates = np.array(dates)
+
+    return predictions, dates
 
 
 def predict_sentiment():
@@ -120,9 +123,9 @@ def technical_analysis(startdate, enddate, company):
 
 def main(startdate, enddate, batch_size, prediction_days, company):
 
-    predicted_prices = predict_price(startdate, enddate, batch_size, prediction_days,company)
+    predicted_prices, dates = predict_price(startdate, enddate, batch_size, prediction_days,company)
     predicted_sentiment = predict_sentiment()
     advise = technical_analysis(startdate, enddate, company)
 
-    return_obj = predictions(predicted_prices, predicted_sentiment, advise)
+    return_obj = predictions(predicted_prices, dates, predicted_sentiment, advise)
     return return_obj

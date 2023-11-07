@@ -6,8 +6,9 @@ import engine
 
 
 class predictions:
-    def __init__(self, predicted_prices, predicted_sentiment, advise):
+    def __init__(self, predicted_prices, dates, predicted_sentiment, advise):
         self.predicted_prices = predicted_prices
+        self.dates = dates
         self.predicted_sentiment = predicted_sentiment
         self.advise = advise
 
