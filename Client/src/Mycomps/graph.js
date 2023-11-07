@@ -113,13 +113,14 @@ export default function Graph(props) {
 
   return (
     <div className="graph">
-      <div className="chart">
-        <div style={{ width: "650px" }}>
+      {/* <div className="chart"> */}
+        
+      {/* </div> */}
+      <div style={{ width: "650px" }}>
           <div>
             <CanvasJSStockChart options={options} />
           </div>
         </div>
-      </div>
       <div className="valuetable" >
         < table className ="valuetable-column">
           <thead>
@@ -160,6 +161,7 @@ export default function Graph(props) {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 }

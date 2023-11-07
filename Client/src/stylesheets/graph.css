@@ -1,11 +1,14 @@
 .predict-container{
+    
     background-color: black;
     margin-bottom:0px;
+    margin-right: 80px;
 }
 .graph{
     margin-top: 0px;
     display: flex;
     flex-direction: row;
+    align-content: space-around;
     /* background-color: black; */
 }
 .chart{
@@ -20,7 +23,7 @@
 }
 
 .valuetable{
-    margin-left: -500px;
+    margin-left: 20px;
     border-collapse: collapse;
     border-spacing: 5px;
     /* border: 1px solid #ccc; */
@@ -30,13 +33,15 @@
     width: 300px;
     margin-right: 100px;
     
+    
 }
 .valuetable:nth-child(odd) {
     background-color: #a01616;
   }
 .valuetable-column{
     width: 350px;
-    margin-right: 115px;
+    
+
 }
 /* .valuetable:hover {
     background-color: #af1d1d;

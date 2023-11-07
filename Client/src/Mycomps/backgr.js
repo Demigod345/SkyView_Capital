@@ -14,8 +14,8 @@ export default function HomePage() {
       <div className="image-row-icons">
       <img src={im4} className="img1" />
     <img src={im2} className="img2" />
-  </div>
-  <div className="image-row-icons">
+  {/* </div> */}
+  {/* <div className="image-row-icons"> */}
     <img src={im3} className="img3" />
     <img src={im1} className="img4" />
   </div>

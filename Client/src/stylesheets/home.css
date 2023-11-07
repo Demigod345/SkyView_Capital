@@ -37,7 +37,7 @@ opacity: 0.7 ;
 .bgmain {
   display: flex;
   flex-direction: column;
-  height:220vmin;
+  height:150vmin;
   width: 100%;
   background-color: #222121;
 }
@@ -50,8 +50,8 @@ opacity: 0.7 ;
 .image-row-icons {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin-left: 10%;
+  width: 100%;
+  /* margin-left: 10%; */
 }
 .full-width-image {
   width: 100%;
@@ -61,40 +61,47 @@ opacity: 0.7 ;
 
 .img1 {
   order: 0;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
   padding: 10px;
-  margin-left: 11%;
+  /* margin-left: 11%; */
   box-sizing: border-box;
+  /* margin-top: 20px; */
+  position: relative;
+  bottom: 20px;
 }
 .img2 {
   order: 1;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
   padding: 10px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   /* margin-right: 110px; */
-  margin-right: 11%;
+  /* margin-right: 11%; */
+  /* position: relative; */
+  /* bottom: 20px; */
   box-sizing: border-box;
 }
 .img3 {
   order: 2;
-  margin-left: 50px;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  margin-left: 11%;
-  margin-top: 20px;
+  /* margin-left: 50px; */
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  /* margin-left: 11%; */
+  /* margin-top: 20px; */
   padding: 10px;
+  padding-top: 50px;
   box-sizing: border-box;
 }
 .img4 {
   order: 3;
-  margin-left: 50px;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  margin-right: 11%;
-  margin-top: 30px;
+  /* margin-left: 50px; */
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  /* margin-right: 11%; */
+  /* margin-top: 20px; */
   padding: 10px;
+  padding-top: 60px;
   box-sizing: border-box;
 }
 .logoimg{
