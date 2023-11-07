@@ -53,12 +53,23 @@ opacity: 0.7 ;
   width: 100%;
   /* margin-left: 10%; */
 }
+
+.bg-image-container {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
+}
 .full-width-image {
-  width: 100vw;
+  /* width: 100vw; */
   /* max-width: 100%; */
-  height: 70vh;
+  /* height: 70vh; */
   /* display: inline-block; */
   /* text-align: center; */
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
 }
 
 .img1 {
@@ -114,9 +125,19 @@ opacity: 0.7 ;
   width: 100%;
 height: 10vmin;
 opacity: 0.7 ;
-
-
 }
+
+.image-row-container{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+}
+.img5 {
+  width:25%;
+  height: 50%;
+  }
 
 .App-logo {
   height: 40vmin;
