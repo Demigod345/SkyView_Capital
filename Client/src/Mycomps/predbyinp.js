@@ -116,7 +116,7 @@ export default function PredByInput(props) {
     }
   };
   const handleIncreaseDays = () => {
-    if (numberOfDays < 7) {
+    if (numberOfDays < 50) {
       setNumberOfDays(numberOfDays + 1);
     }
   };

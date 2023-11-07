@@ -1,6 +1,54 @@
+.predict-container{
+    background-color: black;
+    margin-bottom:0px;
+}
 .graph{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    /* background-color: black; */
+}
+.chart{
+
     display :grid;
     grid-template-columns: auto auto;
-    margin-bottom: 100px;
-
+    margin-bottom: 35px;
+    margin-left: -205px;
+    margin-right: 80px;
+    padding-right: 50px;
+    
 }
+
+.valuetable{
+    margin-left: -500px;
+    border-collapse: collapse;
+    border-spacing: 5px;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+    font-weight: bold;
+    /* box-shadow: 100px 100px 100px rgba(13, 62, 141, 0.1); */
+    width: 300px;
+    margin-right: 100px;
+    
+}
+.valuetable:nth-child(odd) {
+    background-color: #a01616;
+  }
+.valuetable-column{
+    width: 350px;
+    margin-right: 115px;
+}
+/* .valuetable:hover {
+    background-color: #af1d1d;
+  } */
+
+.Search_Stock{
+
+    margin-top: 120px;
+    margin-bottom: 100px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.Search_Stock:active {
+    background-color: #0c855b;
+    transform: scale(.95);
+  }

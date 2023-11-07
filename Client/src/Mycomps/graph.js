@@ -4,7 +4,6 @@ import axios from "axios";
 import CanvasJSReact from "@canvasjs/react-stockcharts";
 var CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
-
 export default function Graph(props) {
   const [apiData, setApiData] = useState(null);
   // const dataPoints = props.graphDataPoints;
@@ -60,8 +59,8 @@ export default function Graph(props) {
   //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`)
   //     .then((response) => response.json())
   //     .then((result) => {
-  //       setApiData(result); 
-  //       console.log(result)       
+  //       setApiData(result);
+  //       console.log(result)
   //     })
   //     .catch((error) => {
   //       console.error("Error fetching data:", error);
@@ -84,7 +83,7 @@ export default function Graph(props) {
   //     });
   //     console.log(datapoints)
   //     // Now you can work with timeSeriesDaily
-  //   } 
+  //   }
   //   //DO CHANGES WITH DATA HERE
   // }, [apiData]);
 
@@ -99,32 +98,34 @@ export default function Graph(props) {
         data: [
           {
             type: "line",
-            dataPoints: dataPoints
+            dataPoints: dataPoints,
           },
         ],
       },
     ],
     navigator: {
       slider: {
-        minimum: new Date("2018-07-01"),
-        maximum: new Date("2023-11-03"),
+        minimum: new Date("1990-01-01"),
+        maximum: new Date("2024-01-01"),
       },
     },
   };
 
   return (
     <div className="graph">
-      <div style={{ width: "500px" }}>
-        <div>
-          <CanvasJSStockChart options={options} />
+      <div className="chart">
+        <div style={{ width: "650px" }}>
+          <div>
+            <CanvasJSStockChart options={options} />
+          </div>
         </div>
       </div>
-      <div style={{ width: "600px" }}>
-        <table align="center">
+      <div className="valuetable" >
+        < table className ="valuetable-column">
           <thead>
-            <tr>
-              <th>prop</th>
-              <th>value</th>
+            <tr >
+              <th>Financial Parameter</th>
+              <th>Value</th>
             </tr>
           </thead>
           <tbody>

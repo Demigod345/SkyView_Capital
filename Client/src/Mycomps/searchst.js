@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import search from "./images/Sectionim1.svg";
 import Graph from "./graph";
-
+import "../stylesheets/graph.css";
 
 function setProperGraphData(dates, predictions) {
   let dummyPoints = [];
@@ -120,7 +120,7 @@ export default function Searchst(props) {
         className="form-group"
         style={{ alignSelf: "center", alignContent: "center",width:'60%',marginLeft:'20%' }}
       >
-        <label>Select a Stock:</label>
+        <label className="Search_Stock1">Select a Stock:</label>
         <select value={ticker} onChange={handleChange}>
           <option value="">Select a stock</option>
           <option value="AAPL">Apple Inc.</option>
@@ -132,7 +132,7 @@ export default function Searchst(props) {
           {/* Add more stock options here */}
         </select>
 
-      <button type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button>
+      <button className="Search_Stock" type="button" onClick={handleClick} style={{marginTop:'15px'}}>Search Stock</button>
 
       <br></br>
       {isSubmitted && (
