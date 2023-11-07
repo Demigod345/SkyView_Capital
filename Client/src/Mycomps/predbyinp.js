@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../stylesheets/predbyinp.css";
 import Graph from "./graph";
+import { CirclesWithBar } from "react-loader-spinner";
 
 function setProperGraphData(dates, predictions) {
   let dummyPoints = [];
@@ -44,23 +45,18 @@ function setProperGraphData(dates, predictions) {
 
 export default function PredByInput(props) {
   const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [company, setCompany] = useState("");
-  const [responseText, setResponseText] = useState("");
-  const [stock, setStock] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [numberOfDays, setNumberOfDays] = useState(30);
-  const [predictionResult, setPredictionResult] = useState(null);
+  const [numberOfDays, setNumberOfDays] = useState(3);
   const [graphDataPoints, setGraphDataPoints] = useState([]);
   const [advice, setAdvice] = useState("");
   const [sentiment, setSentiment] = useState(0);
   const [predictions, setPredictions] = useState(null);
   const [graphData, setGraphData] = useState(null);
   const [dates, setDates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   let token = localStorage.getItem("token");
   token = token.replace(/"/g, ""); // This will remove all double quotes in the string
-
-  const [isDragging, setIsDragging] = useState(false);
 
   const handleStartChange = (e) => {
     setStartDate(e.target.value);
@@ -70,20 +66,23 @@ export default function PredByInput(props) {
     setCompany(e.target.value);
   };
 
-  const handleEndChange = (e) => {
-    setEndDate(e.target.value);
-  };
+  const handleClear = () => {
+    setIsSubmitted(false)
+  }
 
   const handleClick = async (e) => {
     e.preventDefault();
 
     const data = {
       startDate: startDate,
-      endDate: endDate,
+      endDate: "2023-11-07",
       company: company,
     };
 
+    setIsSubmitted(true)
+
     try {
+      setLoading(true);
       const response = await fetch("http://localhost:5000/v1/ml/", {
         method: "POST",
         headers: {
@@ -106,13 +105,13 @@ export default function PredByInput(props) {
           setProperGraphData(data.dates, data.predicted_prices)
         );
 
-        setResponseText(`Response: ${JSON.stringify(data)}`);
+        setLoading(false);
       } else {
-        setResponseText(`Error: ${response.status} - ${response.statusText}`);
+        setLoading(false);
         console.log(`Error: ${response.status} - ${response.statusText}`);
       }
     } catch (error) {
-      setResponseText(`Error: ${error.message}`);
+      setLoading(false);
       console.log(`Error: ${error.message}`);
     }
   };
@@ -127,59 +126,64 @@ export default function PredByInput(props) {
       setNumberOfDays(numberOfDays - 1);
     }
   };
-  
+
   return (
     <div className="predict-container">
       <h2>Predict the Movement of the Stock</h2>
       <p>by providing the input</p>
       <div className="makeGrid">
-      <div className="form-group">
-        <label>Select a Stock:</label>
-        <select
-          value={stock}
-          onChange={(e) => setStock(e.target.value)}
-        >
-          <option value="">Select a stock</option>
-          <option value="AAPL">Apple Inc.</option>
-          <option value="GOOGL">Alphabet Inc.</option>
-          {/* Add more stock options here */}
-        </select>
-      </div>
+        <div className="form-group">
+          <label>Select a Stock:</label>
+          <select value={company} onChange={handleCompanyChange}>
+            <option value="">Select a stock</option>
+            <option value="AAPL">Apple Inc.</option>
+            <option value="GOOGL">Alphabet Inc.</option>
+            <option value="MSFT">Microsoft Inc.</option>
+            <option value="AMZN">Amazon Inc.</option>
+            <option value="NVDA">Nvidia Inc.</option>
+          </select>
+        </div>
 
-      <div className="form-group">
-        <label>Select a Date:</label>
-        <input
-          type="date"
-          value={selectedDate.toISOString().split('T')[0]}
-          onChange={(e) => setSelectedDate(new Date(e.target.value))}
-        />
-      </div>
+        <div className="form-group">
+          <label>Select a Date:</label>
+          <input type="date" value={startDate} onChange={handleStartChange} />
+        </div>
       </div>
       <div className="flex items-center">
-        <div className="w-full h-2 bg-gray-800 rounded-full">
-          
-        </div>
+        <div className="w-full h-2 bg-gray-800 rounded-full"></div>
         <div className="form-group">
-        <label>Number of Days:</label>
-        <div className="number-input">
-          <button onClick={handleDecreaseDays}>-</button>
-          <input type="number" value={numberOfDays} readOnly />
-          <button onClick={handleIncreaseDays}>+</button>
+          <label>Number of Days:</label>
+          <div className="number-input">
+            <button onClick={handleDecreaseDays}>-</button>
+            <input type="number" value={numberOfDays} readOnly />
+            <button onClick={handleIncreaseDays}>+</button>
+          </div>
         </div>
       </div>
-      </div>
-
-      <button 
-      // onClick={handlePredictClick}
-      >Predict</button>
-
-      {predictionResult && (
-        <div className="prediction-result">
-          <h3>Prediction Result</h3>
-          
-          {/* Display the prediction result here */}
+      {isSubmitted ?
+        <div>
+          <button onClick={handleClear}>Clear</button>
+          {loading ? (
+            <div>
+              <CirclesWithBar
+                height="100"
+                width="100"
+                color="#4fa94d"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                outerCircleColor=""
+                innerCircleColor=""
+                barColor=""
+                ariaLabel="circles-with-bar-loading"
+              />
+            </div>
+          ) : (
+            <Graph graphDataPoints={graphDataPoints} />
+          )}
         </div>
-      )}
+      : <button onClick={handleClick}>Predict</button>
+    }
     </div>
     // <div className="predy" align="center">
     //   {/* SEARCH BUTTON */}
