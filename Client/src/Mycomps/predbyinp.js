@@ -1,19 +1,17 @@
 import React, { useState } from "react";
+import "../stylesheets/predbyinp.css";
 
 function Predict() {
-  const [stock, setStock] = useState(""); // State for the selected stock
-  const [selectedDate, setSelectedDate] = useState(new Date()); // State for the selected date
-  const [numberOfDays, setNumberOfDays] = useState(30); // State for the number of days
+  const [stock, setStock] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [numberOfDays, setNumberOfDays] = useState(30);
   const [predictionResult, setPredictionResult] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handlePredictClick = () => {
-    // Implement your prediction logic here
-    // You can send the selected stock, date, and number of days to your prediction API or function
-    // Update the predictionResult state with the result
-    // Example:
-    // const result = predictStockPrice(stock, selectedDate, numberOfDays);
-    // setPredictionResult(result);
+    
   };
+  const trackStyle = `bg-gradient-to-r from-yellow-500 to-red-500 h-2 rounded-full ${isDragging ? 'cursor-grabbing' : 'cursor-pointer'}`;
 
   return (
     <div className="predict-container">
@@ -50,6 +48,7 @@ function Predict() {
           onChange={(e) => setNumberOfDays(parseInt(e.target.value, 10))}
         />
       </div>
+
 
       <button onClick={handlePredictClick}>Predict</button>
 
