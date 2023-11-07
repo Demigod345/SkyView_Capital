@@ -93,7 +93,7 @@ export default function Searchst(props) {
 
   return (
     <div className="predict-container">
-      <h2>Predict the Movement of the Stock</h2>
+      <h2>Analyze Stock Historical Data</h2>
       <p>by providing the input</p>
       <div
         className="form-group"

@@ -159,7 +159,7 @@ export default function Navbar() {
           about
         </a>
 
-        <a className="navbut" font="Montserrat" aria-current="page" href="/learn">
+        <a className="navbut" font="Montserrat" aria-current="page" href="https://youtu.be/dQw4w9WgXcQ?si=gWbheBsBKnRpibug">
           learn
         </a>
 

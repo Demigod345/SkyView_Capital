@@ -203,7 +203,7 @@ function Login() {
       <nav className="nav" style={{"justifyContent":"center"}}>
             <img src={img1} width={"45px"}></img>
         <div className="navbarmain">
-          <a href="/home" style={{ "text-decoration": "none","textAlign":"center","margin":"0px" }}>
+          <a href="" style={{ "text-decoration": "none","textAlign":"center","margin":"0px" }}>
             <h1 style={{ color: "" }} aaa>
               SkyView Capital
             </h1>
@@ -235,6 +235,7 @@ function Login() {
             Enter your personal details<br></br> and start a journey with us.
           </p>
           <br></br>
+        
           <a
             className="button sign-in"
             style={{
@@ -243,8 +244,9 @@ function Login() {
             href="#"
             onClick={handleSignIn2Click}
           >
-            Sign In
+            Sign In 
           </a>
+          
         </div>
         <div id="login">
           <h1>Sign In</h1>

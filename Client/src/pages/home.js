@@ -13,6 +13,8 @@ export default function Home() {
   <>
   <Navbar/>
   <Backg/>
+  <br></br>
+  <br></br>
   <Seacrhst isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/> 
   <br></br>  
   <br></br>

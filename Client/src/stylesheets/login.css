@@ -11,6 +11,7 @@ html,body {
   /* overflow-y: hidden; */
 }
 .button {
+  padding: 20rem;
   border: 1px solid #fff;
   border-radius: 20px;
   color: #fff;
@@ -167,4 +168,9 @@ input[type="text"] {
   color: #aaa; /* Lighter text color */
   padding: 20px;
   text-align: center;
+}
+.button sign-in{
+  margin-bottom: 70px;
+  translate: 0px 100px;
+  height: 50px;
 }

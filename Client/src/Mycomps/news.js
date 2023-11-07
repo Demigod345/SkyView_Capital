@@ -28,6 +28,7 @@ function News() {
       <div className="container my-5">
         <div className="row text-center">
           {news.map((val, index) => {
+            if(!val.author) return (<></>)
             return (
               <div className="col my-3" key={index}>
                 <div className="card" style={{ width: '18rem',height:'30rem', background: 'rgba(0, 0, 0, 0.8)', border: '1px solid #ddd', color: 'white' }}>

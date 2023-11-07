@@ -56,7 +56,7 @@ function Footer() {
                 Useful Links
               </h6>
               <p>
-                <a className="text-white" href="/learn">
+                <a className="text-white" href="https://youtu.be/dQw4w9WgXcQ?si=gWbheBsBKnRpibug">
                   Learn
                 </a>
               </p>
