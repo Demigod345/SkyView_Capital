@@ -3,13 +3,13 @@
 
 .App {
   text-align: center;
-  background-color: black;                    /changed/
+  background-color: black;                    /*changed*/
 }
 /* Set the background color of the HTML and body elements to black */
-html, body {                                                   /changed/
-  background-color: black;                                    /changed/
-  margin: 0;                                                    /changed/
-  padding: 0;                                                   /changed/
+html, body {                                                   /*changed*/
+  background-color: black;                                    /*changed*/
+  margin: 0;                                                    /*changed*/
+  padding: 0;                                                   /*changed*/
 }
 
 /* Add background color to the main content container (if needed) */
