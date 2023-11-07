@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from "../Mycomps/Navbar";
 import Footerc from "../Mycomps/Footer";
-import "../stylesheets/About.css";
+import "../stylesheets/learn.css";
 
 class StockMarketLearn extends Component {
   constructor(props) {
@@ -12,31 +12,31 @@ class StockMarketLearn extends Component {
         {
           id: 1,
           title: 'Introduction to Stock Markets',
-          content: '...',
+          
           link: 'https://www.investopedia.com/terms/s/stockmarket.asp',
         },
         {
           id: 4,
           title: 'How to invest in Stocks',
-          content: '...',
+          
           link: 'https://www.investopedia.com/articles/basics/06/invest1000.asp',
         },
         {
           id: 5,
           title: 'Introduction to Stocks and Markets',
-          content: '...',
+          
           link: 'https://zerodha.com/varsity/module/introduction-to-stock-markets/',
         },
         {
           id: 2,
           title: 'Stock Market Analysis',
-          content: '...',
+          
           link: 'https://www.investopedia.com/terms/s/stock-analysis.asp#:~:text=Stock%20analysis%20involves%20comparing%20a,growing%2C%20stable%2C%20or%20deteriorating.',
         },
         {
           id: 3,
           title: 'Investing Strategies',
-          content: '...',
+         
           link: 'https://www.fool.com/how-to-invest',
         },
         // Add more lessons as needed

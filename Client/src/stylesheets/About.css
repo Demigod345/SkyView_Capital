@@ -173,3 +173,24 @@ html {
   padding: 0 16px;
   color: rgb(238, 255, 5);
 }
+.Title{
+
+}
+
+.content{
+
+}
+.container{
+  width: 80%;
+  margin: auto;
+  padding-top: 100px;
+
+}
+.about-section{
+  
+  /* float: left; */
+  width: 80vw;;
+  border-radius: 40px;
+  margin-left: 10vw;
+  margin-top: 2vh;
+}

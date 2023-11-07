@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import PasswordChecklist from "react-password-checklist";
 import "../stylesheets/login.css";
+import Footerc from "../Mycomps/Footer";
 
 function Login() {
   let navigate = useNavigate();
@@ -170,7 +171,16 @@ function Login() {
 
   return (
     <>
-      <div id="info"></div>
+     <nav className="nav">
+        <div className="navbarmain">
+          <a href="/home" style={{ "text-decoration": "none" }}>
+            <h1 style={{ color: "" }} aaa>
+              SkyView Capital
+            </h1>
+          </a>
+        </div>
+        </nav>
+      
       <div id="container" style={{ border: "1rem", borderColor: "white" }}>
         <div id="cover">
           <h1 className="sign-up">Welcome Back!</h1>
@@ -274,7 +284,9 @@ function Login() {
           </form>
         </div>
       </div>
+      <Footerc />
     </>
+    
   );
 }
 
