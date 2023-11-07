@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import PasswordChecklist from "react-password-checklist";
 import "../stylesheets/login.css";
+import img1 from "../Mycomps/images/logo.svg";
 
 function Login() {
   let navigate = useNavigate();
@@ -85,12 +86,15 @@ function Login() {
         const data = await response.json();
         navigate("/");
       } else {
-        Swal.fire({
-          title: `Error: ${response.status}`,
-          text: `Error: ${response.statusText}`,
-          icon: "error",
-        });
-        return;
+        console.log(response)
+        if(response.status === 400){
+          Swal.fire({
+            title: `Error: ${response.status}`,
+            text: `Email is already registered!`,
+            icon: "error",
+          });
+          return;
+        } 
       }
     } catch (error) {
       Swal.fire({
@@ -196,9 +200,10 @@ function Login() {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav" style={{"justifyContent":"center"}}>
+            <img src={img1} width={"45px"}></img>
         <div className="navbarmain">
-          <a href="/home" style={{ "text-decoration": "none" }}>
+          <a href="/home" style={{ "text-decoration": "none","textAlign":"center","margin":"0px" }}>
             <h1 style={{ color: "" }} aaa>
               SkyView Capital
             </h1>
@@ -269,10 +274,6 @@ function Login() {
                 <br></br>
               </div>
             )}
-            <br></br>
-            <a id="forgot-pass" href="#">
-              Forgot your password?
-            </a>
             <br></br>
             <input className="submit-btn" type="submit" value="Sign In" />
           </form>

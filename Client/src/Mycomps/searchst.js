@@ -118,7 +118,7 @@ export default function Searchst(props) {
     //     </button>
     //   </div>
     // </div>
-    <div className="predict-container">
+    <div className="predict-container" style={{marginTop:"40px"}}>
       <div
         className="form-group"
         style={{ alignSelf: "center", alignContent: "center",width:'60%',marginLeft:'20%' }}
@@ -154,6 +154,7 @@ export default function Searchst(props) {
                 innerCircleColor=""
                 barColor=""
                 ariaLabel="circles-with-bar-loading"
+                justifyContent="center"
               />
             </div>
           ) : (

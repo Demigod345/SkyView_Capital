@@ -161,10 +161,10 @@ export default function PredByInput(props) {
         </div>
       </div>
       {isSubmitted ?
-        <div>
+        <div style={{justifyContent:"center"}}>
           <button onClick={handleClear}>Clear</button>
           {loading ? (
-            <div>
+            <div className="MakeCenter">
               <CirclesWithBar
                 height="100"
                 width="100"

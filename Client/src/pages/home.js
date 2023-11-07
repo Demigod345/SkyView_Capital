@@ -17,6 +17,8 @@ export default function Home() {
   <br></br>  
   <br></br>
   <Prediction/>
+  <br></br>
+  <br></br>
   <Footerc/>
  
    </>
