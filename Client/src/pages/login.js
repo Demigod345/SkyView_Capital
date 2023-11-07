@@ -8,14 +8,12 @@ import Footerc from "../Mycomps/Footer";
 
 function Login() {
   let navigate = useNavigate();
-  const [responseText, setResponseText] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
-  const [verifiedEmail, setVerifiedEmail]=useState('')
-  const [verifiedName, setVerifiedName]=useState('')
-  //new checker
+  const [verifiedEmail, setVerifiedEmail] = useState('')
+  const [verifiedName, setVerifiedName] = useState('')
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const handleEmailChange = (e) => {
@@ -88,10 +86,20 @@ function Login() {
         const data = await response.json();
         navigate("/");
       } else {
-        setResponseText(`Error: ${response.status} - ${response.statusText}`);
+        Swal.fire({
+          title: `Error: ${response.status}`,
+          text: `Error: ${response.statusText}`,
+          icon: "error",
+        });
+        return;
       }
     } catch (error) {
-      setResponseText(`Error: ${error.message}`);
+      Swal.fire({
+        title: `Error`,
+        text: `${error.message}`,
+        icon: "error",
+      });
+      return;
     }
     Swal.fire({
       title: "Sign Up Successful",
@@ -157,10 +165,28 @@ function Login() {
           navigate("home");
         }, 1000);
       } else {
-        setResponseText(`Error: ${response.status} - ${response.statusText}`);
+        if (response.status === 401) {
+          Swal.fire({
+            title: "Error",
+            text: "Incorrect Email or Password",
+            icon: "error",
+          });
+          return;
+        }
+        Swal.fire({
+          title: `Error: ${response.status}`,
+          text: `Error: ${response.statusText}`,
+          icon: "error",
+        });
+        return;
       }
     } catch (error) {
-      setResponseText(`Error: ${error.message}`);
+      Swal.fire({
+        title: "Error",
+        text: `${error.message}`,
+        icon: "error",
+      });
+      return;
     }
     Swal.fire({
       title: "Sign In Successful",
@@ -171,7 +197,7 @@ function Login() {
 
   return (
     <>
-     <nav className="nav">
+      <nav className="nav">
         <div className="navbarmain">
           <a href="/home" style={{ "text-decoration": "none" }}>
             <h1 style={{ color: "" }} aaa>
@@ -179,8 +205,8 @@ function Login() {
             </h1>
           </a>
         </div>
-        </nav>
-      
+      </nav>
+
       <div id="container" style={{ border: "1rem", borderColor: "white" }}>
         <div id="cover">
           <h1 className="sign-up">Welcome Back!</h1>
@@ -234,11 +260,15 @@ function Login() {
               onChange={handlePasswordChange}
             />
             {password !== "" && ( // Conditionally render the checklist
-              <PasswordChecklist
-                rules={["letter","minLength", "number"]}
-                minLength={8}
-                value={password}
-              />
+              <div style={{ display: "inline-block" }}>
+                <br></br>
+                <PasswordChecklist
+                  rules={["letter", "minLength", "number"]}
+                  minLength={8}
+                  value={password}
+                />
+                <br></br>
+              </div>
             )}
             <br></br>
             <a id="forgot-pass" href="#">
@@ -273,11 +303,15 @@ function Login() {
               autocomplete="off"
             />
             {password !== "" && ( // Conditionally render the checklist
-              <PasswordChecklist
-                rules={[ "minLength", "number"]}
-                minLength={8}
-                value={password}
-              />
+              <div style={{ display: "inline-block" }}>
+                <br></br>
+                <PasswordChecklist
+                  rules={["letter", "minLength", "number"]}
+                  minLength={8}
+                  value={password}
+                />
+
+              </div>
             )}
             <br></br>
             <input className="submit-btn" type="submit" value="Sign Up" />
@@ -286,7 +320,7 @@ function Login() {
       </div>
       <Footerc />
     </>
-    
+
   );
 }
 
