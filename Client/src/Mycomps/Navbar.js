@@ -23,7 +23,6 @@ class Navbar extends Component {
     }, 1000); // Adjust the delay time (in milliseconds) as needed
   };
 
-
   render() {
     const { isOpen } = this.state;
     const user = {
@@ -34,18 +33,37 @@ class Navbar extends Component {
     return (
       <nav className="nav">
         <div className="navbarmain">
-          <h1 style={{color:''}} aaa>SkyView Capital</h1>
+          <a href="/home" style={{ "text-decoration": "none" }}>
+            <h1 style={{ color: "" }} aaa>
+              SkyView Capital
+            </h1>
+          </a>
         </div>
         <div className="navright">
-        <a className="navbut" font="Montserrat" aria-current="page" href="#">
+          <a
+            className="navbut"
+            font="Montserrat"
+            aria-current="page"
+            href="/news"
+          >
             News
           </a>
 
-          <a className="navbut" font="Montserrat" aria-current="page" href="#">
+          <a
+            className="navbut"
+            font="Montserrat"
+            aria-current="page"
+            href="/about"
+          >
             about
           </a>
 
-          <a className="navbut" font="Montserrat" aria-current="page" href="#">
+          <a
+            className="navbut"
+            font="Montserrat"
+            aria-current="page"
+            href="/learn"
+          >
             learn
           </a>
 
@@ -54,7 +72,7 @@ class Navbar extends Component {
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
           >
-            <a 
+            <a
               className="navbur"
               font="Montserrat"
               backgroundColor="#282c34"
