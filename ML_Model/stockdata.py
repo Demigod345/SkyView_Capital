@@ -31,13 +31,13 @@ def stock_variables(company):
 
     initial_price = int(past_price['Close'][:1])
 
-    high = int(np.array(past_price['High'].max())) # 52 Week High
-    low = int(np.array(past_price['Low'].min())) # 52 Week Low
-    prev_close = int(past_price['Close'][-1:]) # Prev Close
+    high = float(np.array(past_price['High'].max())) # 52 Week High
+    low = float(np.array(past_price['Low'].min())) # 52 Week Low
+    prev_close = float(past_price['Close'][-1:]) # Prev Close
     returns = (((prev_close - initial_price)/initial_price) * 100) # 52 Week Returns
     avg_volume = float(np.array(past_price['Volume'].mean())/1000000) # Average Volume
-    high_prev = int(past_price['High'][-1:]) # Prev day High
-    low_prev = int(past_price['Low'][-1:]) # Prev day Low
-    market_cap = (int(ticker.get_shares_full(start="2022-01-01", end=None)[-1:]) * prev_close)/1000000000000 # Market Capitalization
+    high_prev = float(past_price['High'][-1:]) # Prev day High
+    low_prev = float(past_price['Low'][-1:]) # Prev day Low
+    market_cap = ((float(ticker.get_shares_full(start="2022-01-01", end=None)[-1:]) * prev_close)/1000000000000) # Market Capitalization
 
     return high, low, prev_close, returns, avg_volume, high_prev, low_prev, market_cap
