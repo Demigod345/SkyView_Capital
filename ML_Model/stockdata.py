@@ -12,5 +12,11 @@ def stock_data(company):
 
     prices = np.array(df['Close'])
     dates = np.array(df.index)
+    prices_list=prices.tolist()
+    dates_list=dates.tolist()
+    search_object= {
+        "prices":prices_list,
+        "dates":dates_list
+    }
 
-    return prices, dates
+    return search_object
