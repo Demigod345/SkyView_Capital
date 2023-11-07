@@ -7,3 +7,12 @@
 .col-md-5 col-lg-4 ml-lg-0 text-center text-md-end{
     font-size: xx-large;
 }
+.footer-image {
+    width: 10px ;  
+   
+  }
+
+.logogrid{
+    display: grid;
+    grid-template-columns: 10% 90%;
+}

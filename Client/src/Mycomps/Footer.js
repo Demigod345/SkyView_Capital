@@ -1,14 +1,18 @@
 import React from 'react';
 import '../stylesheets/home.css';
-
+import image from "./images/logo.svg";
 function Footer() {
   return (
     <footer className="text-center text-lg-start text-white" style={{ backgroundColor: '#000000' }}>
       <div className="container p-4 pb-0">
         <section>
           <div className="row">
+           {/* <div><img src={image} alt="Your Image" style={{width:'70px' }} /></div> */}
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" >
-            <h4 className="text-uppercase mb-4 font-weight-bold">SkyView Capital  </h4>
+              
+            
+            <div style={{width:'10px'}}><h4 className="text-uppercase mb-4 font-weight-bold" >SkyView Capital  </h4></div>
+            
               <p>
               Empower your financial decisions with our Stock Predictor App's 
               data-driven insights and forecasts.</p>
