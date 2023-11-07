@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../stylesheets/predbyinp.css";
 import Graph from "./graph";
 import { CirclesWithBar } from "react-loader-spinner";
+import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 
 function setProperGraphData(dates, predictions) {
   let dummyPoints = [];
@@ -20,42 +22,73 @@ function setProperGraphData(dates, predictions) {
   }
 
   let extra = predictions.length - dates.length;
+  console.log(dummyPoints)
 
   for (let i = 0; i < extra; i++) {
     let prediction = predictions[dates.length + i];
     nanosecondsValue += 24 * 60 * 60 * 1000 * 1000000;
     millisecondsValue = nanosecondsValue / 1000000; // Convert nanoseconds to milliseconds
     date = new Date(millisecondsValue);
-    while (date.getDay() > 5) {
+    while (date.getDay()===0 || date.getDay()===6) {
       nanosecondsValue += 24 * 60 * 60 * 1000 * 1000000;
       millisecondsValue = nanosecondsValue / 1000000; // Convert nanoseconds to milliseconds
       date = new Date(millisecondsValue);
     }
+    console.log(date.getDay)
     let dummyPoint = {
       x: new Date(date),
       y: prediction,
     };
+
     // console.log(dummyPoint);
     dummyPoints.push(dummyPoint);
   }
+  console.log(dummyPoints)
   // console.log(a)
   // console.log(dummyPoints);
   return dummyPoints;
 }
 
-function FutureList({ futureArray }) {
-  console.log("yaha");
-  console.log(typeof futureArray);
-  console.log(futureArray);
+function ShowPredictions({ advice, sentiment, splicedArray }) {
   return (
     <div>
-      <ul>
-        {futureArray.map((object) => {
-          <li>{object.x}</li>;
-          // <li>{object.y}</li>
-          // </>;
-        })}
-      </ul>
+      <Card border="white" className="bg-dark text-white">
+        <Card.Header>Advice</Card.Header>
+        <Card.Body>
+          The Advice based on our Model's Prediction is:<b> {advice}</b>
+        </Card.Body>
+      </Card>
+      <Card border="white" className="bg-dark text-white">
+        <Card.Header>Sentiment Analysis</Card.Header>
+        <Card.Body>
+          The Sentiment based on our Model's Sentiment Analysis Report is:
+          <b> {sentiment}/5</b>
+        </Card.Body>
+      </Card>
+      <Card border="white" className="bg-dark text-white">
+        <Card.Header>Predicted Data</Card.Header>
+        <Card.Body>
+          The Predicted Future Data based on our Model's Report
+        </Card.Body>
+        <div>
+          <Table striped bordered hover variant={"secondary"}>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {splicedArray.map((object) => (
+                <tr key={object.id}>
+                  <td>{object.x.toDateString()}</td>
+                  <td>${object.y.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </Card>
     </div>
   );
 }
@@ -187,8 +220,8 @@ export default function PredByInput(props) {
           </div>
         </div>
       </div>
-      {isSubmitted ?
-      <div style={{justifyContent:"center"}}>
+      {isSubmitted ? (
+        <div style={{ justifyContent: "center" }}>
           <button onClick={handleClear}>Clear</button>
           {loading ? (
             <div className="MakeCenter">
@@ -208,22 +241,12 @@ export default function PredByInput(props) {
           ) : (
             <div>
               <div className="predictedData">
-                <div className="analysedData">
-                  <p style={{ padding: "1vw" }}>advice: {advice}</p>
-                  <p style={{ padding: "1vw" }}>sentiments: {sentiment}</p>
-                </div>
-                {/* <FutureList futureArray={splicedArray}/> */}
-                <div className="predictedDaysData">
-                  <div>
-                    <ul>
-                      {splicedArray.map((object) => (
-                        <li key={object.id}>{object.x.toDateString()}: $ {object.y.toFixed(2)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <h2>data of required number of days:</h2>
-                  <p>dd:mm:yyyy - </p>
-                </div>
+                <br></br>
+                <ShowPredictions
+                  advice={advice}
+                  sentiment={sentiment}
+                  splicedArray={splicedArray}
+                />
               </div>
               <Graph
                 stock={company}
@@ -233,7 +256,7 @@ export default function PredByInput(props) {
             </div>
           )}
         </div>
-       : (
+      ) : (
         <button onClick={handleClick}>Predict</button>
       )}
     </div>
