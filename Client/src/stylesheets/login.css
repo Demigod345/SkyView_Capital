@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
-body {
-  background: #222; /* Dark background */
-  font-family: 'Roboto', sans-serif;
+html,body {
+  background: rgb(79,79,79); /* Dark background */
+  font-family:"Roboto";
   color: #fff; /* Text color */
+  /* overflow-y: hidden; */
 }
 .button {
   border: 1px solid #fff;
@@ -18,6 +20,7 @@ body {
   padding: 15px 60px;
   text-decoration: none;
   text-transform: uppercase;
+  font-family:"Roboto";
 }
 input[type="email"],
 input[type="password"],
@@ -28,6 +31,7 @@ input[type="text"] {
   margin: 5px;
   padding: 10px;
   width: 280px;
+  font-family:"Roboto";
   color: #fff; /* Text color */
 }
 .submit-btn {
@@ -40,6 +44,7 @@ input[type="text"] {
   margin-top: 20px;
   padding: 15px 50px;
   text-transform: uppercase;
+  font-family:"Roboto";
 }
 #login .submit-btn {
   background: #3aa7b1;
@@ -70,6 +75,7 @@ input[type="text"] {
   width: 50%;
   text-align: center;
   top: -550px;
+  font-family:"Roboto";
   z-index: 1;
 }
 #register {
@@ -80,6 +86,7 @@ input[type="text"] {
   width: 50%;
   text-align: center;
   top: -550px;
+  font-family:"Roboto";
   z-index: 1;
 }
 #login h1,
@@ -97,6 +104,7 @@ input[type="text"] {
   letter-spacing: 0.3px;
   padding: 20px;
   color: #fff; /* Text color */
+  font-family:"Roboto";
 }
 #forgot-pass {
   border-bottom: 1px solid #ccc;
@@ -128,6 +136,10 @@ input[type="text"] {
 }
 .sign-in {
   display: none;
+  
+}
+.p.sign-in{
+  font-family:"Roboto";
 }
 .sub {
   position: relative;

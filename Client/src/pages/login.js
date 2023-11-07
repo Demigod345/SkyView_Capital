@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import PasswordChecklist from "react-password-checklist";
 import "../stylesheets/login.css";
-import Footerc from "../Mycomps/Footer";
 
 function Login() {
   let navigate = useNavigate();
@@ -318,7 +317,6 @@ function Login() {
           </form>
         </div>
       </div>
-      <Footerc />
     </>
 
   );

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 .App {
   text-align: center;
   background-color: black;                    /*changed*/
@@ -11,6 +10,7 @@ html, body {                                                   /*changed*/
   margin: 0;                                                    /*changed*/
   padding: 0;                                                   /*changed*/
   overflow-x: hidden;
+  font-family:"Roboto";
 }
 
 /* Add background color to the main content container (if needed) */
