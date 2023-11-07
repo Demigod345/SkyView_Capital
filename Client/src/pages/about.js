@@ -47,7 +47,7 @@ function About() {
                 alt="Jane"
                 style={{ width: "80%" ,alignSelf:"center"}}
               />
-              <div className="container container5">
+              <div className="container container5" style={{textAlign:'center'}}>
                 <h2>Aaditya Aren</h2>
                 <p className="title">Problem Solver</p>
                 <p>
@@ -74,7 +74,7 @@ function About() {
                 alt="Alind"
                 style={{ width: "80%" ,alignSelf:"center"}}
               />
-              <div className="container container1">
+              <div className="container container1" style={{textAlign:'center'}}>
                 <h2>Alind Sharma</h2>
                 <p className="title">Tech Genius</p>
                 <p>
@@ -101,7 +101,7 @@ function About() {
                 alt="DJ"
                 style={{ width: "80%" ,alignSelf:"center"}}
               />
-              <div className="container container2">
+              <div className="container container2" style={{textAlign:'center'}}>
                 <h2>Divyansh Jain</h2>
                 <p className="title">Dev Genius</p>
                 <p>
@@ -127,7 +127,7 @@ function About() {
                 alt="Ishaan"
                 style={{ width: "80%" , alignSelf:"center" }}
               />
-              <div className="container container3">
+              <div className="container container3" style={{textAlign:'center'}}>
                 <h2>Ishaan Jain</h2>
                 <p className="title">Front end Expert</p>
                 <p>
@@ -153,9 +153,9 @@ function About() {
                 alt="Kunal"
                 style={{ width: "80%" ,alignSelf:"center"}}
               />
-              <div className="container container4">
+              <div className="container container4" style={{textAlign:'center'}}>
                 <h2>Kunal Bansal</h2>
-                <p className="title">ML Lover</p>
+                <p className="title" style={{textAlign:'center'}}>ML Lover</p>
                 <p>
                   Kunal Bansal, the 'ML Lover,' is known for his strategic mindset
                   and determination.<br></br>

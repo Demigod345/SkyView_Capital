@@ -30,8 +30,8 @@ function News() {
           {news.map((val, index) => {
             return (
               <div className="col my-3" key={index}>
-                <div className="card" style={{ width: '18rem', background: 'rgba(0, 0, 0, 0.8)', border: '1px solid #ddd', color: 'white' }}>
-                  <img src={val.urlToImage} className="card-img-top" alt="" />
+                <div className="card" style={{ width: '18rem',height:'30rem', background: 'rgba(0, 0, 0, 0.8)', border: '1px solid #ddd', color: 'white' }}>
+                  <img src={val.urlToImage} className="card-img-top" alt="" style={{width:'18rem',height:'10rem'}} />
                   <div className="card-body" style={{ height: '300px' }}>
                     <h5 className="card-title" style={{ fontFamily: 'Montserrat', fontSize: '18px' }}>
                       {val.title}
@@ -41,7 +41,7 @@ function News() {
                     </p>
                   </div>
                   <div className="card-footer" style={{ background: 'rgba(0, 0, 0, 0.8)', color: 'white' }}>
-                    <a href={val.url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <a href={val.url} className="btn btn-success" target="_blank" rel="noopener noreferrer">
                       Read More
                     </a>
                   </div>
