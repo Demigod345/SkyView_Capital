@@ -1,5 +1,5 @@
-Demo Video Link:- https://youtu.be/LcfezauPsIw
 # Skyview Capital
+Demo Video Link:- https://youtu.be/LcfezauPsIw
 Our Company SkyView Capital comprises of five talented and motivated individuals, each bringing a unique set of skills and qualities to the group. We have created this project in our course CSN-291 and it aims to make the process of trading stocks a little less daunting by using the power of Artificial Intelligence. We have to tried to predict stock prices and movement using LSTM Neural Network to predict future prices of the stock and BERTA model and Technical Analysis to predict the future movement of price.
 
 Group Members (in alphabetical order)
