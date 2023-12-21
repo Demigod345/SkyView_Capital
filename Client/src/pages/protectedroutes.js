@@ -7,24 +7,24 @@ export default function ProtectedRoutes() {
   console.log(Token.length);
   let verified = false;
   if(Token.length>3) verified=true
-  // Token = Token.replace(/"/g, ""); // This will remove all double quotes in the string
+  Token = Token.replace(/"/g, ""); // This will remove all double quotes in the string
 
-  // const requestOptions = {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${Token}`,
-  //   },
-  //   body: JSON.stringify({ title: "React POST Request Example" }),
-  // };
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+    body: JSON.stringify({ title: "React POST Request Example" }),
+  };
   // console.log(requestOptions);
-  // fetch("http://localhost:5000/v1/auth/verify-token/", requestOptions)
-  //   .then((response) => {
-  //     if (response.status === 401) {
-  //       verified = false;
-  //       navigate('/')
-  //     }
-  //   })
+  fetch("http://localhost:5000/v1/auth/verify-token/", requestOptions)
+    .then((response) => {
+      if (response.status === 401) {
+        verified = false;
+        navigate('/')
+      }
+    })
 
   return verified ? <Outlet /> : <Navigate to="/" />;
 }

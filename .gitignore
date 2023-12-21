@@ -1,3 +1,4 @@
 .env
 __pycache__
 ML_Model/ML_Model
+*.sh

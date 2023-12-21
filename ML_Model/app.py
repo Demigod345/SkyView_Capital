@@ -1,18 +1,9 @@
-from flask import Flask, request 
+from flask import Flask, request, jsonify
 import os
 from dotenv import load_dotenv
 import time
 import engine
-
-
-class predictions:
-    def __init__(self, predicted_prices, dates, predicted_sentiment, advise):
-        self.predicted_prices = predicted_prices
-        self.dates = dates
-        self.predicted_sentiment = predicted_sentiment
-        self.advise = advise
-
-# print(engine.technical_analysis())
+import stockdata
 load_dotenv()
 
 app = Flask(__name__)             
@@ -28,8 +19,6 @@ def yo():
 @app.route("/model", methods=["POST"])
 def predict(): 
     secretKey=request.headers.get('Token')
-    print(secretKey)
-    print(os.getenv('SERVER_SECRET'))
     if(secretKey!=os.getenv('SERVER_SECRET')):
         print("NOT VERIFIED")
         return "invalid request"
@@ -40,12 +29,23 @@ def predict():
         company=request.get_json()['company']
         startDate=request.get_json()['startDate']
         endDate=request.get_json()['endDate']
+        days=request.get_json()['days']
         # duration=request.get_json()['duration']
-        time.sleep(500)
+        #Date- YYYY-MM-DD
         #yaha par processing kar and data bhej
-        prediction_days = 3
+        ticker=company.split('-')[0]
+        prediction_days = days
         batch_size = 7
-        return_obj = engine.main(startDate, endDate, batch_size, prediction_days, company)
-        return "successful"
+        print("startDate", startDate)
+        print("endDate", endDate)
+        return_obj = engine.main(str(startDate), str(endDate), batch_size, prediction_days, str(ticker))
+        print(return_obj)
+        return jsonify(return_obj)
+    
+@app.route("/search", methods=["POST"])                   
+def search():                      
+    company = request.get_json()['company']
+    return jsonify(stockdata.stock_data(company))
+
 if __name__ == "__main__":        
     app.run(debug=True, port=6969)                     

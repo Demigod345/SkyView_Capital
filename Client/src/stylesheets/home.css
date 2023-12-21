@@ -37,7 +37,7 @@ opacity: 0.7 ;
 .bgmain {
   display: flex;
   flex-direction: column;
-  height:220vmin;
+  height:130vmin;
   width: 100%;
   background-color: #222121;
 }
@@ -50,58 +50,94 @@ opacity: 0.7 ;
 .image-row-icons {
   display: flex;
   justify-content: space-between;
-  width: 95%;
+  width: 100%;
+  /* margin-left: 10%; */
+}
+
+.bg-image-container {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
 }
 .full-width-image {
+  /* width: 100vw; */
+  /* max-width: 100%; */
+  /* height: 70vh; */
+  /* display: inline-block; */
+  /* text-align: center; */
+  height: 100%;
   width: 100%;
-  max-width: 100%;
-  text-align: center;
+  object-fit: contain;
+
 }
 
 .img1 {
   order: 0;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  padding: 10px;
-  margin-left: 150px;
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  padding-left:7vw;
+  padding-right:3vw;
+  /* margin-left: 11%; */
   box-sizing: border-box;
+  /* margin-top: 20px; */
+  position: relative;
+  bottom: 20px;
 }
 .img2 {
   order: 1;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  padding: 10px;
-  margin-top: 30px;
-  margin-right: 110px;
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  padding-left:4vw;
+  padding-right:4vw;
+  /* margin-top: 30px; */
+  /* margin-right: 110px; */
+  /* margin-right: 11%; */
+  /* position: relative; */
+  /* bottom: 20px; */
   box-sizing: border-box;
 }
 .img3 {
   order: 2;
-  margin-left: 50px;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  margin-left: 150px;
-  margin-top: 20px;
-  padding: 10px;
+  /* margin-left: 50px; */
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  /* margin-left: 11%; */
+  /* margin-top: 20px; */
+  padding-left:4vw;
+  padding-right:4vw;
+  padding-top: 50px;
   box-sizing: border-box;
 }
 .img4 {
   order: 3;
-  margin-left: 50px;
-  width: 30%; /* Adjust this value as needed */
-  max-width: 100%;
-  margin-right: 100px;
-  margin-top: 30px;
-  padding: 10px;
+  /* margin-left: 50px; */
+  width: 25%; /* Adjust this value as needed */
+  /* max-width: 100%; */
+  /* margin-right: 11%; */
+  /* margin-top: 20px; */
+  padding-left:3vw;
+  padding-right:7vw;
+  padding-top: 60px;
   box-sizing: border-box;
 }
 .logoimg{
   width: 100%;
 height: 10vmin;
 opacity: 0.7 ;
-
-
 }
+
+.image-row-container{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+}
+.img5 {
+  width:25%;
+  height: 50%;
+  }
 
 .App-logo {
   height: 40vmin;
@@ -452,4 +488,11 @@ ul li a {
 
 .logout-button:hover {
   background-color: #c0392b; /* Hover background color for the logout button */
+}
+
+.graph{
+  width: 50vw;
+}
+canvas{
+  width: 80vw;
 }

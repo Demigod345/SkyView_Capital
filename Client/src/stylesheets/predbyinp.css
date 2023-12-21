@@ -1,18 +1,22 @@
 .predict-container {
+  position: relative;
   text-align: center;
   font-size: 20px;
   margin: 0 auto;
   width: 80%;
-  max-width: 400px;
+  /* max-width: 400px; */
   padding: 20px;
   border: 2px solid #ddd;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s, transform 0.3s; /* Add transition properties */
 
   /* Rest of your styles */
 }
-
+[aria-label="circles-with-bar-loading"]{
+  justify-content: center;
+  margin: 10px 0px;
+}
 .predict-container:hover {
   box-shadow: 6px 6px 12px rgba(255, 255, 255, 0.2); /* Adjust the values as needed for the desired effect */
   transform: translate(-4px, -4px); /* Move the box slightly on hover */
@@ -24,7 +28,12 @@
   transform: none;
 }
 
-  
+  .makeGrid{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 5vw ;
+    margin: 0px 2vw 0px 2vw;
+  }
   .form-group {
     margin: 10px 0;
   }
@@ -67,4 +76,22 @@
   .prediction-result {
     margin-top: 20px;
   }
-  
+
+  .Predict-button{
+    width: 5000px;
+  }
+
+  .predictedData{
+    text-align: left;
+     border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    /* border: ; */
+  }
+
+  .analysedData{
+
+   
+    margin-top: 6vw;
+    margin-left: 3vw;
+    width:50vw;
+  }

@@ -1,67 +1,85 @@
-import React, { Component } from "react";
-import logo from "./images/logo.svg";
+import React, { useState } from "react";
+import logo from "./images/skyviewlogobg.png";
+import { useNavigate } from "react-router-dom";
 
-class Navbar extends Component {
-  state = {
-    isProfileOpen: false,
+export default function Navbar() {
+  let navigate = useNavigate();
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsProfileOpen(true);
   };
 
-  toggleProfileDropdown = () => {
-    this.setState({ isProfileOpen: !this.state.isProfileOpen });
+  const handleMouseLeave = () => {
+    setIsProfileOpen(true); // Keep the dropdown open after mouse leaves
+    setTimeout(() => {
+      setIsProfileOpen(false); // Close the dropdown after a delay
+    }, 1000); // Adjust the delay time (in milliseconds) as needed
   };
 
-  render() {
-    const user = {
-      name: "John Doe",
-      email: "johndoe@example.com",
-    };
+  const handleLogout = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("name", "");
+    localStorage.setItem("email", "");
+    // You need to implement the 'navigate' function or replace it with your own routing logic
+    navigate('/');
+  };
 
-    return (
-      <nav className="nav">
-        <div className="navbarmain">
-          <h1 style={{color:''}} aaa> SkyView Capital</h1>
-        </div>
-        <div className="navright">
-        <a className="navbut" font="Montserrat" aria-current="page" href="#">
-            News
-          </a>
+  const user = {
+    name: localStorage.getItem("name").replace(/"/g, ""),
+    email: localStorage.getItem("email").replace(/"/g, ""),
+  };
 
-          <a className="navbut" font="Montserrat" aria-current="page" href="#">
-            about
-          </a>
 
-          <a className="navbut" font="Montserrat" aria-current="page" href="#">
-            learn
-          </a>
+  return (
+    <nav className="nav">
+      <div className="navbarmain">
+        <a href="/home" style={{ textDecoration: "none" }}>
+          <h1 style={{ color: "" }} aaa>
+            SkyView Capital
+          </h1>
+        </a>
+      </div>
+      <div className="navright">
+        <a className="navbut" font="Montserrat" aria-current="page" href="/news">
+          News
+        </a>
 
-          <div
-            className="profile-dropdown"
-            onMouseEnter={this.toggleProfileDropdown}
-            onMouseLeave={this.toggleProfileDropdown}
+        <a className="navbut" font="Montserrat" aria-current="page" href="/about">
+          about
+        </a>
+
+        <a className="navbut" font="Montserrat" aria-current="page" href="https://youtu.be/dQw4w9WgXcQ?si=gWbheBsBKnRpibug">
+          learn
+        </a>
+
+        <div
+          className="profile-dropdown"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <a
+            className="navbur"
+            font="Montserrat"
+            backgroundColor="#282c34"
+            aria-current="page"
+            href="#"
           >
-            <a 
-              className="navbur"
-              font="Montserrat"
-              backgroundColor="#282c34"
-              aria-current="page"
-              href="#"
-            >
-              profile
-            </a>
-            {this.state.isProfileOpen && (
-              <div className="profile-content">
-                <div className="profile-background">
-                  <p className="user-name">{user.name}</p>
-                  <p className="user-email">{user.email}</p>
-                </div>
-                <button className="logout-button">Logout</button>
+            profile
+          </a>
+          {isProfileOpen && (
+            <div className="profile-content">
+              <div className="profile-background">
+                <p className="user-name">Username: {user.name}</p>
+                <p className="user-email">Email ID: {user.email}</p>
               </div>
-            )}
-          </div>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
         </div>
-      </nav>
-    );
-  }
+      </div>
+    </nav>
+  );
 }
-
-export default Navbar;
