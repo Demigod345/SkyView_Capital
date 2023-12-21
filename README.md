@@ -5,14 +5,13 @@ Our Company SkyView Capital comprises of five talented and motivated individuals
 
 Group Members (in alphabetical order)
 
-S.No. | Name              | Enrollment no
------ | ----------------- | -------------
-1.    | Aaditya Aren      | 22114001    
-2.    | Alind Sharma      | 22113013
-3.    | Divyansh Jain     | 22114032     
-4.    | Ishaan Jain       | 22114039      
-5.    | Kunal Bansal      | 22115083   
-     
+| S.No. | Name             | Enrollment no |
+| ----- | ---------------- | -------------- |
+| 1.    | Aaditya Aren     | 22114001       |
+| 2.    | Alind Sharma     | 22113013       |
+| 3.    | Divyansh Jain    | 22114032       |
+| 4.    | Ishaan Jain      | 22114039       |
+| 5.    | Kunal Bansal     | 22115083       |
 
 # Requirements
 - Nodejs (https://nodejs.org/en/download)
