@@ -24,7 +24,6 @@ function Footer() {
                   </h4>
                 </a>
               </div>
-
               <p>
                 Empower your financial decisions with our Stock Predictor App's
                 data-driven insights and forecasts.
